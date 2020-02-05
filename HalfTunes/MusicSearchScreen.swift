@@ -23,9 +23,13 @@ class MusicSearchScreen: UIViewController
     return recognizer
   }()
   
-  init() {
+  let searchEngine: SearchEngine
+  
+  init(searchEngine: SearchEngine) {
+    self.searchEngine = searchEngine
     super.init(nibName: nil, bundle: nil)
     title = "Music Search"
+    navigationItem.searchController = searchEngine
   }
   
   required init?(coder: NSCoder) { fatalError() }
@@ -57,34 +61,6 @@ class MusicSearchScreen: UIViewController
     view.backgroundColor = .blue
     //tableView.tableFooterView = UIView()  //FIXME:
     downloadService.downloadsSession = downloadsSession
-  }
-}
-
-extension MusicSearchScreen: UISearchBarDelegate
-{
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    dismissKeyboard()
-    guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    queryService.getSearchResults(searchTerm: searchText) { [weak self] results, errorMessage in
-      UIApplication.shared.isNetworkActivityIndicatorVisible = false
-      
-      if let results = results {
-        self?.searchResults = results
-        self?.tableView.reloadData()
-        self?.tableView.setContentOffset(CGPoint.zero, animated: false)
-      }
-      
-      if !errorMessage.isEmpty { print("Search error: " + errorMessage) }
-    }
-  }
-  
-  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-    view.addGestureRecognizer(tapRecognizer)
-  }
-  
-  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-    view.removeGestureRecognizer(tapRecognizer)
   }
 }
 
