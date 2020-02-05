@@ -3,13 +3,12 @@ import AVFoundation
 import AVKit
 import UIKit
 
-class MusicSearchScreen: UIViewController
+class MusicSearchScreen: UITableViewController
 {
   /// Get local file path: download task stores tune here; AV player plays it.
   let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-  let downloadService = DownloadService()
+  let downloadService: DownloadService
   let queryService = QueryService()
-  @IBOutlet weak var tableView: UITableView!
   lazy var downloadsSession: URLSession = { //FIXME: Be Immutable
     let configuration = URLSessionConfiguration.background(withIdentifier:
       "com.raywenderlich.HalfTunes.bgSession")
@@ -18,8 +17,9 @@ class MusicSearchScreen: UIViewController
   var searchResults: [Track] = [] //FIXME: Be immutable
   let searchEngine: SearchEngine
   
-  init(searchEngine: SearchEngine) {
+  init(searchEngine: SearchEngine, downloadService: DownloadService) {
     self.searchEngine = searchEngine
+    self.downloadService = downloadService
     super.init(nibName: nil, bundle: nil)
     title = "Music Search"
     navigationItem.searchController = searchEngine
@@ -51,10 +51,8 @@ class MusicSearchScreen: UIViewController
     view.backgroundColor = .blue
     downloadService.downloadsSession = downloadsSession //FIXME: What is this?
   }
-}
 
-extension MusicSearchScreen: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
     let cell = tableView.dequeueReusableCell(withIdentifier: "wtvr", for: indexPath)
     let trackCell = TrackCell()
@@ -64,28 +62,24 @@ extension MusicSearchScreen: UITableViewDataSource {
     return cell
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return searchResults.count }
-}
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return searchResults.count
+  }
 
-extension MusicSearchScreen: UITableViewDelegate
-{
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //When user taps cell, play the local file, if it's downloaded.
-    
     let track = searchResults[indexPath.row]
-    
-    if track.downloaded {
-      playDownload(track)
-    }
+    if track.downloaded { playDownload(track) }
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 69.0 }
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 69.0 }
 }
 
 extension MusicSearchScreen: URLSessionDelegate
 {
   func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+    //FIXME: This is awful
     DispatchQueue.main.async {
       if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
         let completionHandler = appDelegate.backgroundSessionCompletionHandler {

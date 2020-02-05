@@ -9,7 +9,7 @@ class StreamMusic: UINavigationController
     let sRS = UIViewController()
     sRS.view.backgroundColor = .green
     let sE = SearchEngine(searchResultsScreen: sRS)
-    let mSS = MusicSearchScreen(searchEngine: sE)
+    let mSS = MusicSearchScreen(searchEngine: sE, downloadService: DownloadService())
     super.init(rootViewController: mSS)
     navigationBar.barStyle = .black
     navigationBar.isTranslucent = false

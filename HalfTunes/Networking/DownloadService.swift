@@ -5,7 +5,7 @@ import Foundation
 /// Allows cancel, pause, resume download.
 class DownloadService
 {
-  var activeDownloads: [URL: Download] = [ : ]
+  var activeDownloads: [URL: Download] = [ : ]  //FIXME: Be Immutable
   var downloadsSession: URLSession!   //FIXME: Be Immutable /// SearchViewController creates downloadsSession
 
   func cancelDownload(_ track: Track) {
