@@ -25,13 +25,12 @@ class MusicSearchScreen: UIViewController
   
   init() {
     super.init(nibName: nil, bundle: nil)
+    title = "Music Search"
   }
   
   required init?(coder: NSCoder) { fatalError() }
   
-  @objc func dismissKeyboard() {
-    searchBar.resignFirstResponder()
-  }
+  @objc func dismissKeyboard() { searchBar.resignFirstResponder() }
   
   func localFilePath(for url: URL) -> URL {
     return documentsPath.appendingPathComponent(url.lastPathComponent)
@@ -47,9 +46,7 @@ class MusicSearchScreen: UIViewController
     player.play()
   }
   
-  func position(for bar: UIBarPositioning) -> UIBarPosition {
-    return .topAttached
-  }
+  func position(for bar: UIBarPositioning) -> UIBarPosition { return .topAttached }
   
   func reload(_ row: Int) {
     tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
@@ -57,7 +54,8 @@ class MusicSearchScreen: UIViewController
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    tableView.tableFooterView = UIView()
+    view.backgroundColor = .blue
+    //tableView.tableFooterView = UIView()  //FIXME:
     downloadService.downloadsSession = downloadsSession
   }
 }
@@ -93,15 +91,17 @@ extension MusicSearchScreen: UISearchBarDelegate
 extension MusicSearchScreen: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
-    let cell: TrackCell = tableView.dequeueReusableCell(withIdentifier: TrackCell.identifier,
-                                                        for: indexPath) as! TrackCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "wtvr", for: indexPath)
+    let trackCell = TrackCell()
+    trackCell.delegate = self //FIXME: Delegate cell button tap events to this view controller.
     
-    cell.delegate = self      // Delegate cell button tap events to this view controller.
+    //cell.delegate = self
     
     let track = searchResults[indexPath.row]
-    cell.configure(track: track,
+    trackCell.configure(track: track,
                    downloaded: track.downloaded,
                    download: downloadService.activeDownloads[track.previewURL])
+    embed(viewController: trackCell, inContainerView: cell.contentView)
     return cell
   }
   
@@ -131,35 +131,35 @@ extension MusicSearchScreen: UITableViewDelegate
 extension MusicSearchScreen: TrackCellDelegate
 {
   func cancelTapped(_ cell: TrackCell) {
-    if let indexPath = tableView.indexPath(for: cell) {
-      let track = searchResults[indexPath.row]
-      downloadService.cancelDownload(track)
-      reload(indexPath.row)
-    }
+//    if let indexPath = tableView.indexPath(for: cell) {
+//      let track = searchResults[indexPath.row]
+//      downloadService.cancelDownload(track)
+//      reload(indexPath.row)
+//    }
   }
   
   func downloadTapped(_ cell: TrackCell) {
-    if let indexPath = tableView.indexPath(for: cell) {
-      let track = searchResults[indexPath.row]
-      downloadService.startDownload(track)
-      reload(indexPath.row)
-    }
+//    if let indexPath = tableView.indexPath(for: cell) {
+//      let track = searchResults[indexPath.row]
+//      downloadService.startDownload(track)
+//      reload(indexPath.row)
+//    }
   }
   
   func pauseTapped(_ cell: TrackCell) {
-    if let indexPath = tableView.indexPath(for: cell) {
-      let track = searchResults[indexPath.row]
-      downloadService.pauseDownload(track)
-      reload(indexPath.row)
-    }
+//    if let indexPath = tableView.indexPath(for: cell) {
+//      let track = searchResults[indexPath.row]
+//      downloadService.pauseDownload(track)
+//      reload(indexPath.row)
+//    }
   }
   
   func resumeTapped(_ cell: TrackCell) {
-    if let indexPath = tableView.indexPath(for: cell) {
-      let track = searchResults[indexPath.row]
-      downloadService.resumeDownload(track)
-      reload(indexPath.row)
-    }
+//    if let indexPath = tableView.indexPath(for: cell) {
+//      let track = searchResults[indexPath.row]
+//      downloadService.resumeDownload(track)
+//      reload(indexPath.row)
+//    }
   }
 }
 
@@ -224,10 +224,10 @@ extension MusicSearchScreen: URLSessionDownloadDelegate
     let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
     
     DispatchQueue.main.async {
-      if let trackCell = self.tableView.cellForRow(at: IndexPath(row: download.track.index,
-                                                                 section: 0)) as? TrackCell {
-        trackCell.updateDisplay(progress: download.progress, totalSize: totalSize)
-      }
+//      if let trackCell = self.tableView.cellForRow(at: IndexPath(row: download.track.index,
+//                                                                 section: 0)) as? TrackCell {
+//        trackCell.updateDisplay(progress: download.progress, totalSize: totalSize)
+//      }
     }
   }
 }

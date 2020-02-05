@@ -9,9 +9,10 @@ protocol TrackCellDelegate
   func resumeTapped(_ cell: TrackCell)
 }
 
-class TrackCell: UITableViewCell
+class TrackCell: UIViewController
 {
   static let identifier = "TrackCell"
+  //FIXME: Break Into Smaller Objects
   @IBOutlet weak var artistLabel: UILabel!
   @IBOutlet weak var cancelButton: UIButton!
   @IBOutlet weak var downloadButton: UIButton!
@@ -20,8 +21,6 @@ class TrackCell: UITableViewCell
   @IBOutlet weak var progressView: UIProgressView!
   @IBOutlet weak var titleLabel: UILabel!
   
-  /// Delegate identifies track for this cell, then
-  /// passes this to a download service method.
   var delegate: TrackCellDelegate?
   
   @IBAction func cancelTapped(_ sender: AnyObject) {
@@ -64,7 +63,7 @@ class TrackCell: UITableViewCell
     progressLabel.isHidden = !showDownloadControls
     
     // If the track is already downloaded, enable cell selection and hide the Download button.
-    selectionStyle = downloaded ? UITableViewCell.SelectionStyle.gray : UITableViewCell.SelectionStyle.none
+    //selectionStyle = downloaded ? UITableViewCell.SelectionStyle.gray : UITableViewCell.SelectionStyle.none
     downloadButton.isHidden = downloaded || showDownloadControls
   }
   
