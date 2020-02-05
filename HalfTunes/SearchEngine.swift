@@ -69,4 +69,10 @@ extension SearchEngine: UISearchBarDelegate
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     //view.removeGestureRecognizer(tapRecognizer)
   }
+  
+  //FIXME: remove if unneeded
+  //  lazy var tapRecognizer: UITapGestureRecognizer = {
+  //    var recognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
+  //    return recognizer
+  //  }()
 }

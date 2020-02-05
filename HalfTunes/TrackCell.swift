@@ -72,3 +72,39 @@ class TrackCell: UIViewController
     progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totalSize)
   }
 }
+
+//FIXME: Setup Playback
+//extension MusicSearchScreen: TrackCellDelegate
+//{
+//  func cancelTapped(_ cell: TrackCell) {
+////    if let indexPath = tableView.indexPath(for: cell) {
+////      let track = searchResults[indexPath.row]
+////      downloadService.cancelDownload(track)
+////      reload(indexPath.row)
+////    }
+//  }
+//
+//  func downloadTapped(_ cell: TrackCell) {
+////    if let indexPath = tableView.indexPath(for: cell) {
+////      let track = searchResults[indexPath.row]
+////      downloadService.startDownload(track)
+////      reload(indexPath.row)
+////    }
+//  }
+//
+//  func pauseTapped(_ cell: TrackCell) {
+////    if let indexPath = tableView.indexPath(for: cell) {
+////      let track = searchResults[indexPath.row]
+////      downloadService.pauseDownload(track)
+////      reload(indexPath.row)
+////    }
+//  }
+//
+//  func resumeTapped(_ cell: TrackCell) {
+////    if let indexPath = tableView.indexPath(for: cell) {
+////      let track = searchResults[indexPath.row]
+////      downloadService.resumeDownload(track)
+////      reload(indexPath.row)
+////    }
+//  }
+//}
