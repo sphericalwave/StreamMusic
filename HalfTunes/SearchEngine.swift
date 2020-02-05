@@ -10,7 +10,7 @@ import UIKit
 
 protocol SearchEngineDelegate: AnyObject
 {
-    func update(tracks: [Track])
+    func update(tracks: Tracks)
 }
 
 class SearchEngine: UISearchController
@@ -36,14 +36,14 @@ extension SearchEngine: UISearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text else { return }
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true //FIXME: These are deprecated
         queryService.searchResults(searchTerm: searchText) { [weak self] tracks, errorMessage in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false  //FIXME: These are deprecated
             guard let tracks = tracks else {
                 print("Search error: " + errorMessage)
                 return
             }
-            self?.searchEngineDelegate?.update(tracks: tracks)
+            var tracks2 = Tracks()  //FIXME: Constructor Please
+            tracks2.tracks = tracks
+            self?.searchEngineDelegate?.update(tracks: tracks2)
         }
     }
 }

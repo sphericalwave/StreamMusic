@@ -33,7 +33,7 @@ class TrackCell: UIViewController
     
     @IBAction func cancelTapped(_ sender: AnyObject) {
         downloadService.cancelDownload(track)
-        //      reload(indexPath.row)
+        //reload(indexPath.row)
     }
     
     @IBAction func downloadTapped(_ sender: AnyObject) {
@@ -44,11 +44,11 @@ class TrackCell: UIViewController
     @IBAction func pauseOrResumeTapped(_ sender: AnyObject) {
         if (pauseButton.titleLabel?.text == "Pause") {
             downloadService.pauseDownload(track)
-            ////      reload(indexPath.row)
+            //reload(indexPath.row)
         }
         else {
             downloadService.resumeDownload(track)
-            //      reload(indexPath.row)
+            //reload(indexPath.row)
         }
     }
     
@@ -79,8 +79,7 @@ class TrackCell: UIViewController
         progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totalSize)
     }
     
-    //FIXME: Push Into Cell
-    func playDownload(_ track: Track) {
+    func playTrack() {
         let playerViewController = AVPlayerViewController()
         present(playerViewController, animated: true, completion: nil)
         let url = files.file(for: track.previewURL) //FIXME: Improve Naming
@@ -88,9 +87,4 @@ class TrackCell: UIViewController
         playerViewController.player = player
         player.play()
     }
-    
-    func didSelect() {
-        
-    }
-    
 }
