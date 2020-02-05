@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension UIViewController {
-    
+extension UIViewController
+{
     func setupViewLayoutConstraints(viewController: UIViewController, rect: CGRect) -> UIView {
         let newView = viewController.view!
         newView.translatesAutoresizingMaskIntoConstraints = true
