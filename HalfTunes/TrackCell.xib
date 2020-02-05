@@ -48,6 +48,9 @@
                     <state key="normal" title="Cancel">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="cancelTapped:" destination="-1" eventType="touchUpInside" id="1f2-L3-Tyt"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-Mu-ni1">
                     <rect key="frame" x="336" y="9" width="69" height="30"/>
@@ -58,6 +61,9 @@
                     <state key="normal" title="Download">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="downloadTapped:" destination="-1" eventType="touchUpInside" id="Qp4-IS-WME"/>
+                    </connections>
                 </button>
                 <progressView hidden="YES" opaque="NO" tag="40" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HN6-su-Avc">
                     <rect key="frame" x="9" y="70" width="396" height="2"/>
@@ -78,6 +84,9 @@
                     <state key="normal" title="Pause">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="pauseOrResumeTapped:" destination="-1" eventType="touchUpInside" id="L0U-Cp-uHq"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

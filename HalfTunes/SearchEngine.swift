@@ -8,7 +8,8 @@
 
 import UIKit
 
-protocol SearchEngineDelegate: AnyObject {
+protocol SearchEngineDelegate: AnyObject
+{
   func update(tracks: [Track])
 }
 
@@ -24,52 +25,25 @@ class SearchEngine: UISearchController
     searchBar.placeholder = "Song name or artist"
     searchBar.showsCancelButton = true
     searchBar.delegate = self
-    //searchResultsUpdater = self //FIXME: Make MusicSearchScreen the searchResultsUpdater
-    delegate = self
-    
     self.obscuresBackgroundDuringPresentation = false
     self.hidesNavigationBarDuringPresentation = true
   }
-  
   required init?(coder: NSCoder) { fatalError() }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    guard searchBar.delegate != nil, searchResultsUpdater != nil, searchEngineDelegate != nil else { fatalError() }
-  }
 }
-
-//extension SearchEngine: UISearchResultsUpdating
-//{
-//  func updateSearchResults(for searchController: UISearchController) {
-//    print("What do i do here")
-//    //searchController.
-//  }
-//}
-
-extension SearchEngine: UISearchControllerDelegate { }
 
 extension SearchEngine: UISearchBarDelegate
 {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
-    guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    guard let searchText = searchBar.text else { return }
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true //FIXME: These are deprecated
     queryService.searchResults(searchTerm: searchText) { [weak self] tracks, errorMessage in
-      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false  //FIXME: These are deprecated
       guard let tracks = tracks else {
         print("Search error: " + errorMessage)
         return
       }
       self?.searchEngineDelegate?.update(tracks: tracks)
-      
-      
-      //searchResultsUpdater?.updateSearchResults(for: self) //Not Sure About this
-      //          if let results = results {
-      //            self?.searchResults = results
-      //            self?.tableView.reloadData()
-      //            self?.tableView.setContentOffset(CGPoint.zero, animated: false)
-      //          }
     }
   }
 }

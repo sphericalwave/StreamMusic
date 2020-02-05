@@ -3,14 +3,18 @@ import UIKit
 
 class StreamMusic: UINavigationController
 {
-  let tintColor =  UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1)
-  
   init() {
     let sRS = UIViewController()
     sRS.view.backgroundColor = .green
     let sE = SearchEngine(searchResultsScreen: nil, queryService: QueryService())
-    let mSS = MusicSearchScreen(searchEngine: sE, downloadService: DownloadService())
-    sE.searchResultsUpdater = mSS
+    
+    let configuration = URLSessionConfiguration.background(withIdentifier: "com.sphericalwave.StreamMusic.bgSession")
+    let channel = URLSession(configuration: configuration)
+    let downloadService = DownloadService(channel: channel)
+    //channel.delegate = downloadService  //FIXME: That's a challenge
+    let mSS = MusicSearchScreen(searchEngine: sE, downloadService: downloadService)
+    
+    //sE.searchResultsUpdater = mSS
     sE.searchEngineDelegate = mSS
     super.init(rootViewController: mSS)
     navigationBar.barStyle = .black
@@ -18,14 +22,4 @@ class StreamMusic: UINavigationController
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
-  
-//  //FIXME: move this into subclasses
-//  private func customizeAppearance() {
-//    //window?.tintColor = tintColor
-//    UISearchBar.appearance().barTintColor = tintColor
-//    UINavigationBar.appearance().barTintColor = tintColor
-//    UINavigationBar.appearance().tintColor = UIColor.white
-//    let titleTextAttributes = [NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue) : UIColor.white]
-//    UINavigationBar.appearance().titleTextAttributes = titleTextAttributes
-//  }
 }
