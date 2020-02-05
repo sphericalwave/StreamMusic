@@ -17,7 +17,7 @@ class TrackCell: UIViewController
   init(track: Track, downloadService: DownloadService) {
     self.track = track
     self.downloadService = downloadService
-    super.init(nibName: "TrackCell", bundle: nil)
+    super.init(nibName: "TrackCellStacks", bundle: nil)
   }
   
   required init?(coder: NSCoder) { fatalError() }

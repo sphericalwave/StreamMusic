@@ -50,6 +50,7 @@ class QueryService
     
     var index = 0
     
+    //FIXME: Apply Codable
     for trackDictionary in array {
       if let trackDictionary = trackDictionary as? JSONDictionary,
         let previewURLString = trackDictionary["previewUrl"] as? String,

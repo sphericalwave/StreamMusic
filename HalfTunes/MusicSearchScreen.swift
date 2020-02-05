@@ -25,7 +25,7 @@ class MusicSearchScreen: UITableViewController
   }
   
   required init?(coder: NSCoder) { fatalError() }
-
+  
   //FIXME: Push Into Cell
   func playDownload(_ track: Track) {
     let playerViewController = AVPlayerViewController()
@@ -36,18 +36,12 @@ class MusicSearchScreen: UITableViewController
     player.play()
   }
   
-  func position(for bar: UIBarPositioning) -> UIBarPosition { return .topAttached }
-  
-  func reload(_ row: Int) {
-    tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
-  }
-  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
     let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.id, for: indexPath)
     let track = tracks[indexPath.row]
     let trackCell = TrackCell(track: track, downloadService: downloadService)
-//    trackCell.configure(track: track, downloaded: track.downloaded, download: downloadService.activeDownloads[track.previewURL])  //FIXME: Be Immutable
+    //    trackCell.configure(track: track, downloaded: track.downloaded, download: downloadService.activeDownloads[track.previewURL])  //FIXME: Be Immutable
     embed(viewController: trackCell, inContainerView: cell.contentView)
     return cell
   }
@@ -55,7 +49,7 @@ class MusicSearchScreen: UITableViewController
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return tracks.count
   }
-
+  
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //FIXME: Push into the cell
     //When user taps cell, play the local file, if it's downloaded.
@@ -74,4 +68,3 @@ extension MusicSearchScreen: SearchEngineDelegate {
     tableView.setContentOffset(CGPoint.zero, animated: false)
   }
 }
-
