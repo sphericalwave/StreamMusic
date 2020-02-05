@@ -30,6 +30,11 @@ class TrackCell: UIViewController
   
   required init?(coder: NSCoder) { fatalError() }
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    configure(track: track, downloaded: false, download: nil) //FIXME:
+  }
+  
   @IBAction func cancelTapped(_ sender: AnyObject) {
     delegate?.cancelTapped(self)
   }
@@ -39,11 +44,8 @@ class TrackCell: UIViewController
   }
   
   @IBAction func pauseOrResumeTapped(_ sender: AnyObject) {
-    if(pauseButton.titleLabel?.text == "Pause") {
-      delegate?.pauseTapped(self)
-    } else {
-      delegate?.resumeTapped(self)
-    }
+    if (pauseButton.titleLabel?.text == "Pause") { delegate?.pauseTapped(self) }
+    else { delegate?.resumeTapped(self) }
   }
   
   func configure(track: Track, downloaded: Bool, download: Download?) {

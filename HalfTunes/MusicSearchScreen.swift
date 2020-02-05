@@ -67,13 +67,14 @@ class MusicSearchScreen: UITableViewController
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //FIXME: Push into the cell
     //When user taps cell, play the local file, if it's downloaded.
     let track = tracks[indexPath.row]
     if track.downloaded { playDownload(track) }
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 69.0 }
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 81.0 }
 }
 
 extension MusicSearchScreen: SearchEngineDelegate {
