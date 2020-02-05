@@ -11,7 +11,7 @@ protocol TrackCellDelegate
 
 class TrackCell: UIViewController
 {
-  static let identifier = "TrackCell"
+  static let id = "TrackCell" //FIXME: Framework violating OOP
   //FIXME: Break Into Smaller Objects
   @IBOutlet weak var artistLabel: UILabel!
   @IBOutlet weak var cancelButton: UIButton!
@@ -20,8 +20,15 @@ class TrackCell: UIViewController
   @IBOutlet weak var progressLabel: UILabel!
   @IBOutlet weak var progressView: UIProgressView!
   @IBOutlet weak var titleLabel: UILabel!
-  
   var delegate: TrackCellDelegate?
+  let track: Track
+  
+  init(track: Track) {
+    self.track = track
+    super.init(nibName: "TrackCell", bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
   
   @IBAction func cancelTapped(_ sender: AnyObject) {
     delegate?.cancelTapped(self)

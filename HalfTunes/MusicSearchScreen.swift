@@ -7,15 +7,14 @@ class MusicSearchScreen: UITableViewController
 {
   /// Get local file path: download task stores tune here; AV player plays it.
   let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-  let downloadService: DownloadService
-  let queryService = QueryService()
   lazy var downloadsSession: URLSession = { //FIXME: Be Immutable
     let configuration = URLSessionConfiguration.background(withIdentifier:
       "com.raywenderlich.HalfTunes.bgSession")
     return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
   }()
-  var searchResults: [Track] = [] //FIXME: Be immutable
+  var tracks: [Track] = [] //FIXME: Be immutable
   let searchEngine: SearchEngine
+  let downloadService: DownloadService
   
   init(searchEngine: SearchEngine, downloadService: DownloadService) {
     self.searchEngine = searchEngine
@@ -23,6 +22,7 @@ class MusicSearchScreen: UITableViewController
     super.init(nibName: nil, bundle: nil)
     title = "Music Search"
     navigationItem.searchController = searchEngine
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: TrackCell.id)
   }
   
   required init?(coder: NSCoder) { fatalError() }
@@ -54,26 +54,44 @@ class MusicSearchScreen: UITableViewController
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "wtvr", for: indexPath)
-    let trackCell = TrackCell()
-    let track = searchResults[indexPath.row]
-    trackCell.configure(track: track, downloaded: track.downloaded, download: downloadService.activeDownloads[track.previewURL])  //FIXME: Be Immutable
+    let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.id, for: indexPath)
+    let track = tracks[indexPath.row]
+    let trackCell = TrackCell(track: track)
+//    trackCell.configure(track: track, downloaded: track.downloaded, download: downloadService.activeDownloads[track.previewURL])  //FIXME: Be Immutable
     embed(viewController: trackCell, inContainerView: cell.contentView)
     return cell
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return searchResults.count
+    return tracks.count
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //When user taps cell, play the local file, if it's downloaded.
-    let track = searchResults[indexPath.row]
+    let track = tracks[indexPath.row]
     if track.downloaded { playDownload(track) }
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 69.0 }
+}
+
+extension MusicSearchScreen: SearchEngineDelegate {
+  func update(tracks: [Track]) {
+    self.tracks = tracks
+    tableView.reloadData()
+    tableView.setContentOffset(CGPoint.zero, animated: false)
+  }
+}
+
+extension MusicSearchScreen: UISearchResultsUpdating
+{
+  //FIXME: I don't care for the naming of this method
+  //Can i wrap it with a protocol extension?
+  func updateSearchResults(for searchController: UISearchController) {
+    print("What do i do here")
+    //searchController.
+  }
 }
 
 extension MusicSearchScreen: URLSessionDelegate

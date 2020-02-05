@@ -8,71 +8,68 @@
 
 import UIKit
 
+protocol SearchEngineDelegate: AnyObject {
+  func update(tracks: [Track])
+}
+
 class SearchEngine: UISearchController
 {
-    init(searchResultsScreen: UIViewController) {
-        super.init(searchResultsController: searchResultsScreen)
-        let searchBar = self.searchBar
-        searchBar.placeholder = "Song name or artist"
-        searchBar.showsCancelButton = true
-        searchBar.delegate = self
-        searchResultsUpdater = self
-        delegate = self
-        
-        self.obscuresBackgroundDuringPresentation = false
-        self.hidesNavigationBarDuringPresentation = true
-    }
+  let queryService: QueryService
+  weak var searchEngineDelegate: SearchEngineDelegate?
+  
+  init(searchResultsScreen: UIViewController?, queryService: QueryService) {
+    self.queryService = queryService
+    super.init(searchResultsController: searchResultsScreen)
+    let searchBar = self.searchBar
+    searchBar.placeholder = "Song name or artist"
+    searchBar.showsCancelButton = true
+    searchBar.delegate = self
+    //searchResultsUpdater = self //FIXME: Make MusicSearchScreen the searchResultsUpdater
+    delegate = self
     
-    required init?(coder: NSCoder) { fatalError() }
+    self.obscuresBackgroundDuringPresentation = false
+    self.hidesNavigationBarDuringPresentation = true
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    guard searchBar.delegate != nil, searchResultsUpdater != nil, searchEngineDelegate != nil else { fatalError() }
+  }
 }
 
-extension SearchEngine: UISearchResultsUpdating
-{
-    func updateSearchResults(for searchController: UISearchController) {
-        print("What do i do here")
-    }
-}
+//extension SearchEngine: UISearchResultsUpdating
+//{
+//  func updateSearchResults(for searchController: UISearchController) {
+//    print("What do i do here")
+//    //searchController.
+//  }
+//}
 
 extension SearchEngine: UISearchControllerDelegate { }
-
-//extension SearchEngine: UISearchBarDelegate
-//{
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        print("Submit a Request to Using Search URL")
-//        //pass results to data object
-//    }
-//}
 
 extension SearchEngine: UISearchBarDelegate
 {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//    dismissKeyboard()
-//    guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-//    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-//    queryService.getSearchResults(searchTerm: searchText) { [weak self] results, errorMessage in
-//      UIApplication.shared.isNetworkActivityIndicatorVisible = false
-//
-//      if let results = results {
-//        self?.searchResults = results
-//        self?.tableView.reloadData()
-//        self?.tableView.setContentOffset(CGPoint.zero, animated: false)
-//      }
-//
-//      if !errorMessage.isEmpty { print("Search error: " + errorMessage) }
-//    }
+    searchBar.resignFirstResponder()
+    guard let searchText = searchBar.text, !searchText.isEmpty else { return }
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    queryService.searchResults(searchTerm: searchText) { [weak self] tracks, errorMessage in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      guard let tracks = tracks else {
+        print("Search error: " + errorMessage)
+        return
+      }
+      self?.searchEngineDelegate?.update(tracks: tracks)
+      
+      
+      //searchResultsUpdater?.updateSearchResults(for: self) //Not Sure About this
+      //          if let results = results {
+      //            self?.searchResults = results
+      //            self?.tableView.reloadData()
+      //            self?.tableView.setContentOffset(CGPoint.zero, animated: false)
+      //          }
+    }
   }
-  
-  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-    //view.addGestureRecognizer(tapRecognizer)
-  }
-  
-  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-    //view.removeGestureRecognizer(tapRecognizer)
-  }
-  
-  //FIXME: remove if unneeded
-  //  lazy var tapRecognizer: UITapGestureRecognizer = {
-  //    var recognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
-  //    return recognizer
-  //  }()
 }
