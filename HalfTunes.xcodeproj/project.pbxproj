@@ -10,10 +10,11 @@
 		5394F02521864DF5006E754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5394F02321864DF4006E754C /* LaunchScreen.storyboard */; };
 		55138322227DCD7B00A739ED /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55138321227DCD7B00A739ED /* TrackCell.swift */; };
 		55138329227DCE0D00A739ED /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55138328227DCE0D00A739ED /* Track.swift */; };
-		5513832C227DD0C400A739ED /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5513832B227DD0C400A739ED /* SearchViewController.swift */; };
+		5513832C227DD0C400A739ED /* MusicSearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5513832B227DD0C400A739ED /* MusicSearchScreen.swift */; };
 		5513832F227DD49300A739ED /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5513832E227DD49300A739ED /* QueryService.swift */; };
 		55138331227DD51800A739ED /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55138330227DD51800A739ED /* DownloadService.swift */; };
 		55E768D3227DDAAA00517F98 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E768D2227DDAAA00517F98 /* Download.swift */; };
+		AF44CA7C23EA5C61001D50CE /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF44CA7B23EA5C61001D50CE /* TrackCell.xib */; };
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
@@ -23,10 +24,11 @@
 		5394F02421864DF4006E754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55138321227DCD7B00A739ED /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		55138328227DCE0D00A739ED /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		5513832B227DD0C400A739ED /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		5513832B227DD0C400A739ED /* MusicSearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchScreen.swift; sourceTree = "<group>"; };
 		5513832E227DD49300A739ED /* QueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
 		55138330227DD51800A739ED /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		55E768D2227DDAAA00517F98 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		AF44CA7B23EA5C61001D50CE /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		D2A5F2001F4A9144005CD714 /* HalfTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalfTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A5F2081F4A9144005CD714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,20 +47,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		55138324227DCD8900A739ED /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				55138321227DCD7B00A739ED /* TrackCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		55138325227DCDA200A739ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
 				5394F02321864DF4006E754C /* LaunchScreen.storyboard */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
+				AF44CA7B23EA5C61001D50CE /* TrackCell.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -78,14 +73,6 @@
 				55E768D2227DDAAA00517F98 /* Download.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5513832A227DCFE200A739ED /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				5513832B227DD0C400A739ED /* SearchViewController.swift */,
-			);
-			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		5513832D227DD48600A739ED /* Networking */ = {
@@ -119,12 +106,12 @@
 			isa = PBXGroup;
 			children = (
 				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
-				55138324227DCD8900A739ED /* Cells */,
+				5513832B227DD0C400A739ED /* MusicSearchScreen.swift */,
+				55138321227DCD7B00A739ED /* TrackCell.swift */,
 				55138327227DCDFF00A739ED /* Model */,
 				5513832D227DD48600A739ED /* Networking */,
 				55138325227DCDA200A739ED /* Resources */,
 				55138326227DCDAB00A739ED /* Supporting Files */,
-				5513832A227DCFE200A739ED /* View Controllers */,
 			);
 			path = HalfTunes;
 			sourceTree = "<group>";
@@ -191,6 +178,7 @@
 				5394F02521864DF5006E754C /* LaunchScreen.storyboard in Resources */,
 				D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */,
 				D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */,
+				AF44CA7C23EA5C61001D50CE /* TrackCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +192,7 @@
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
 				55138322227DCD7B00A739ED /* TrackCell.swift in Sources */,
 				5513832F227DD49300A739ED /* QueryService.swift in Sources */,
-				5513832C227DD0C400A739ED /* SearchViewController.swift in Sources */,
+				5513832C227DD0C400A739ED /* MusicSearchScreen.swift in Sources */,
 				55138329227DCE0D00A739ED /* Track.swift in Sources */,
 				55E768D3227DDAAA00517F98 /* Download.swift in Sources */,
 				55138331227DD51800A739ED /* DownloadService.swift in Sources */,
