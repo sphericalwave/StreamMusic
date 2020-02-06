@@ -3,7 +3,7 @@ import UIKit
 
 /// Downloads song snippets, and stores in local file.
 /// Allows cancel, pause, resume download.
-class DownloadService: NSObject
+class DownloadedTracks: NSObject
 {
   var activeDownloads: [URL: Download] = [ : ]  //FIXME: Be Immutable
   let channel: URLSession
@@ -45,7 +45,7 @@ class DownloadService: NSObject
   }
 }
 
-extension DownloadService: URLSessionDelegate
+extension DownloadedTracks: URLSessionDelegate
 {
   func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
     //FIXME: This is awful
@@ -59,7 +59,7 @@ extension DownloadService: URLSessionDelegate
   }
 }
 
-extension DownloadService: URLSessionDownloadDelegate
+extension DownloadedTracks: URLSessionDownloadDelegate
 {
   func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                   didFinishDownloadingTo location: URL)

@@ -11,9 +11,9 @@ class StreamMusic: UINavigationController
         
         let configuration = URLSessionConfiguration.background(withIdentifier: "com.sphericalwave.StreamMusic.bgSession")
         let backgroundChannel = URLSession(configuration: configuration)
-        let downloadService = DownloadService(channel: backgroundChannel)   //FIXME: Do i need two channels?
+        let downloadedTracks = DownloadedTracks(channel: backgroundChannel)   //FIXME: Do i need two channels?
         //channel.delegate = downloadService  //FIXME: That's a challenge
-        let mSS = MusicSearchScreen(searchEngine: sE, downloadService: downloadService)
+        let mSS = MusicSearchScreen(searchEngine: sE, downloadedTracks: downloadedTracks)
         
         //sE.searchResultsUpdater = mSS
         sE.searchEngineDelegate = mSS

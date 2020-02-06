@@ -7,12 +7,12 @@ class MusicSearchScreen: UITableViewController
 {
     var tracks: Tracks? //FIXME: Be immutable
     let searchEngine: SearchEngine
-    let downloadService: DownloadService
+    let downloadedTracks: DownloadedTracks
     let playerViewController = AVPlayerViewController() //FIXME: Inject
     
-    init(searchEngine: SearchEngine, downloadService: DownloadService) {
+    init(searchEngine: SearchEngine, downloadedTracks: DownloadedTracks) {
         self.searchEngine = searchEngine
-        self.downloadService = downloadService
+        self.downloadedTracks = downloadedTracks
         //self.tracks = tracks
         super.init(nibName: nil, bundle: nil)
         title = "Music Search"
@@ -25,7 +25,7 @@ class MusicSearchScreen: UITableViewController
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.id, for: indexPath)
         guard let track = tracks?[indexPath.row] else { fatalError() }
-        let trackCell = TrackCell(track: track, downloadService: downloadService, files: Files()) //FIXME: Inject Files
+        let trackCell = TrackCell(track: track, downloadedTracks: downloadedTracks, files: Files()) //FIXME: Inject Files
         embed(viewController: trackCell, inContainerView: cell.contentView)
         return cell
     }

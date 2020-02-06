@@ -35,8 +35,8 @@ extension SearchEngine: UISearchBarDelegate
 {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        guard let searchText = searchBar.text else { return }
-        appleMusic.searchResults(searchTerm: searchText) { [weak self] tracks, errorMessage in
+        guard let string = searchBar.text else { return }
+        appleMusic.tracksMatching(searchTerm: string) { [weak self] tracks, errorMessage in
             guard let tracks = tracks else {
                 print("Search error: " + errorMessage)
                 return

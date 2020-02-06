@@ -12,14 +12,14 @@ class TrackCell: UIViewController
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
     let track: Track
-    let downloadService: DownloadService
+    let downloadedTracks: DownloadedTracks   //FIXME: matching naming to type
     let files: Files
     
-    init(track: Track, downloadService: DownloadService, files: Files) {
+    init(track: Track, downloadedTracks: DownloadedTracks, files: Files) {
         self.track = track
-        self.downloadService = downloadService
+        self.downloadedTracks = downloadedTracks
         self.files = files  //FIXME: Naming is questionable
-        super.init(nibName: "TrackCellStacks", bundle: nil)
+        super.init(nibName: "TrackCell", bundle: nil)
     }
     
     required init?(coder: NSCoder) { fatalError() }
@@ -30,22 +30,22 @@ class TrackCell: UIViewController
     }
     
     @IBAction func cancelTapped(_ sender: AnyObject) {
-        downloadService.cancelDownload(track)
+        downloadedTracks.cancelDownload(track)
         //reload(indexPath.row)
     }
     
     @IBAction func downloadTapped(_ sender: AnyObject) {
-        downloadService.startDownload(track)
+        downloadedTracks.startDownload(track)
         //reload(indexPath.row)
     }
     
     @IBAction func pauseOrResumeTapped(_ sender: AnyObject) {
         if (pauseButton.titleLabel?.text == "Pause") {
-            downloadService.pauseDownload(track)
+            downloadedTracks.pauseDownload(track)
             //reload(indexPath.row)
         }
         else {
-            downloadService.resumeDownload(track)
+            downloadedTracks.resumeDownload(track)
             //reload(indexPath.row)
         }
     }

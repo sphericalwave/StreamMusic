@@ -14,7 +14,7 @@ class AppleMusic
         self.channel = channel
     }
     
-    func searchResults(searchTerm: String, completion: @escaping ([Track]?, String) -> Void) {
+    func tracksMatching(searchTerm: String, completion: @escaping ([Track]?, String) -> Void) {
         dataTask?.cancel()  //cancel current data task...better name?
         
         var urlComponents = URLComponents(string: "https://itunes.apple.com/search")  //FIXME: Framework demands var
