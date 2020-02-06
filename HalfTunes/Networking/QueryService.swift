@@ -26,6 +26,8 @@ class QueryService
                 self?.errorMessage += "DataTask error: " + error.localizedDescription + "\n"  //FIXME: Be Immutable
                 return
             }
+            //print(response) //HTTP Response
+            print(String(decoding: data, as: UTF8.self))
             self?.updateSearchResults(data)
             DispatchQueue.main.async { completion(self?.tracks, self?.errorMessage ?? "") }
         }
@@ -33,35 +35,17 @@ class QueryService
     }
     
     private func updateSearchResults(_ data: Data) {
-        var response: JSONDictionary?
-        tracks.removeAll()
-        
-        do {
-            response = try JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary
-        } catch let parseError as NSError {
-            errorMessage += "JSONSerialization error: \(parseError.localizedDescription)\n"
-            return
-        }
-        
-        guard let array = response!["results"] as? [Any] else {
-            errorMessage += "Dictionary does not contain results key\n"
-            return
-        }
-        
+        tracks.removeAll()  //FIXME: Implies Mutable State
         var index = 0
-        
-        //FIXME: Apply Codable
-        for trackDictionary in array {
-            if let trackDictionary = trackDictionary as? JSONDictionary,
-                let previewURLString = trackDictionary["previewUrl"] as? String,
-                let previewURL = URL(string: previewURLString),
-                let name = trackDictionary["trackName"] as? String,
-                let artist = trackDictionary["artistName"] as? String {
-                tracks.append(Track(name: name, artist: artist, previewURL: previewURL, index: index))
-                index += 1
-            } else {
-                errorMessage += "Problem parsing trackDictionary\n"
+        let decoder = JSONDecoder()
+        do {
+            let appleMusicResponse = try decoder.decode(AppleMusicResponse.self, from: data)
+            let tracks2 = appleMusicResponse.tracks
+            for track in tracks2 {
+                tracks.append(Track(name: track.name, artist: track.artist, previewURL: track.previewURL, index: index))
+                index += 1  //FIXME: Remove need for this index
             }
         }
+        catch { fatalError() }
     }
 }

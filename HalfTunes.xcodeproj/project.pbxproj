@@ -22,10 +22,23 @@
 		AF7DC3F123EAEF5600C562A7 /* SearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DC3F023EAEF5600C562A7 /* SearchEngine.swift */; };
 		AFFBDF7223EB37B500F182A1 /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDF7123EB37B500F182A1 /* Tracks.swift */; };
 		AFFBDF7423EB3C7000F182A1 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDF7323EB3C7000F182A1 /* SwiftUIView.swift */; };
+		AFFBDF7C23EC3E5600F182A1 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDF7B23EC3E5600F182A1 /* DataTests.swift */; };
+		AFFBDF8423EC3E6E00F182A1 /* TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDF8323EC3E6E00F182A1 /* TrackTests.swift */; };
+		AFFBDF8623EC3F2E00F182A1 /* AppleMusicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDF8523EC3F2E00F182A1 /* AppleMusicResponse.swift */; };
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AFFBDF7E23EC3E5600F182A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2A5F1F81F4A9143005CD714 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2A5F1FF1F4A9144005CD714;
+			remoteInfo = HalfTunes;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5394F02421864DF4006E754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +56,11 @@
 		AF7DC3F023EAEF5600C562A7 /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = SearchEngine.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AFFBDF7123EB37B500F182A1 /* Tracks.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = Tracks.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AFFBDF7323EB3C7000F182A1 /* SwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		AFFBDF7923EC3E5600F182A1 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFFBDF7B23EC3E5600F182A1 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		AFFBDF7D23EC3E5600F182A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFFBDF8323EC3E6E00F182A1 /* TrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTests.swift; sourceTree = "<group>"; };
+		AFFBDF8523EC3F2E00F182A1 /* AppleMusicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicResponse.swift; sourceTree = "<group>"; };
 		D2A5F2001F4A9144005CD714 /* HalfTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalfTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A5F2081F4A9144005CD714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +69,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AFFBDF7623EC3E5600F182A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FD1F4A9144005CD714 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				55138328227DCE0D00A739ED /* Track.swift */,
+				AFFBDF8523EC3F2E00F182A1 /* AppleMusicResponse.swift */,
 				55E768D2227DDAAA00517F98 /* Download.swift */,
 			);
 			path = Model;
@@ -97,10 +123,21 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		AFFBDF7A23EC3E5600F182A1 /* DataTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFFBDF8323EC3E6E00F182A1 /* TrackTests.swift */,
+				AFFBDF7B23EC3E5600F182A1 /* DataTests.swift */,
+				AFFBDF7D23EC3E5600F182A1 /* Info.plist */,
+			);
+			path = DataTests;
+			sourceTree = "<group>";
+		};
 		D2A5F1F71F4A9143005CD714 = {
 			isa = PBXGroup;
 			children = (
 				D2A5F2021F4A9144005CD714 /* HalfTunes */,
+				AFFBDF7A23EC3E5600F182A1 /* DataTests */,
 				D2A5F2011F4A9144005CD714 /* Products */,
 			);
 			indentWidth = 2;
@@ -111,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				D2A5F2001F4A9144005CD714 /* HalfTunes.app */,
+				AFFBDF7923EC3E5600F182A1 /* DataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,6 +178,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AFFBDF7823EC3E5600F182A1 /* DataTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFFBDF8023EC3E5600F182A1 /* Build configuration list for PBXNativeTarget "DataTests" */;
+			buildPhases = (
+				AFFBDF7523EC3E5600F182A1 /* Sources */,
+				AFFBDF7623EC3E5600F182A1 /* Frameworks */,
+				AFFBDF7723EC3E5600F182A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFFBDF7F23EC3E5600F182A1 /* PBXTargetDependency */,
+			);
+			name = DataTests;
+			productName = DataTests;
+			productReference = AFFBDF7923EC3E5600F182A1 /* DataTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D2A5F1FF1F4A9144005CD714 /* HalfTunes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2A5F2121F4A9144005CD714 /* Build configuration list for PBXNativeTarget "HalfTunes" */;
@@ -163,10 +219,14 @@
 		D2A5F1F81F4A9143005CD714 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Ray Wenderlich";
 				TargetAttributes = {
+					AFFBDF7823EC3E5600F182A1 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = D2A5F1FF1F4A9144005CD714;
+					};
 					D2A5F1FF1F4A9144005CD714 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1020;
@@ -187,11 +247,19 @@
 			projectRoot = "";
 			targets = (
 				D2A5F1FF1F4A9144005CD714 /* HalfTunes */,
+				AFFBDF7823EC3E5600F182A1 /* DataTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AFFBDF7723EC3E5600F182A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FE1F4A9144005CD714 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,6 +275,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AFFBDF7523EC3E5600F182A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFFBDF7C23EC3E5600F182A1 /* DataTests.swift in Sources */,
+				AFFBDF8423EC3E6E00F182A1 /* TrackTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FC1F4A9144005CD714 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,12 +299,21 @@
 				AF7DC3F123EAEF5600C562A7 /* SearchEngine.swift in Sources */,
 				AF7DC3ED23EAEB6500C562A7 /* UIViewController+Extensions.swift in Sources */,
 				55138329227DCE0D00A739ED /* Track.swift in Sources */,
+				AFFBDF8623EC3F2E00F182A1 /* AppleMusicResponse.swift in Sources */,
 				55E768D3227DDAAA00517F98 /* Download.swift in Sources */,
 				55138331227DD51800A739ED /* DownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFFBDF7F23EC3E5600F182A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2A5F1FF1F4A9144005CD714 /* HalfTunes */;
+			targetProxy = AFFBDF7E23EC3E5600F182A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5394F02321864DF4006E754C /* LaunchScreen.storyboard */ = {
@@ -249,6 +335,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AFFBDF8123EC3E5600F182A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DataTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = SW.DataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HalfTunes.app/HalfTunes";
+			};
+			name = Debug;
+		};
+		AFFBDF8223EC3E5600F182A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DataTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = SW.DataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HalfTunes.app/HalfTunes";
+			};
+			name = Release;
+		};
 		D2A5F2101F4A9144005CD714 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -401,6 +532,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AFFBDF8023EC3E5600F182A1 /* Build configuration list for PBXNativeTarget "DataTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFFBDF8123EC3E5600F182A1 /* Debug */,
+				AFFBDF8223EC3E5600F182A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D2A5F1FB1F4A9143005CD714 /* Build configuration list for PBXProject "HalfTunes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
