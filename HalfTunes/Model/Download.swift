@@ -3,41 +3,25 @@ import Foundation
 
 class Download
 {
-  var isDownloading = false
-  var progress: Float = 0
-  var resumeData: Data?
-  var task: URLSessionDownloadTask?
-  var track: Track
-  
-  init(track: Track) {
-    self.track = track
-  }
+    let task: URLSessionDownloadTask
+    let track: Track
+    let channel: URLSession
     
-    func start() {
-//        download.task = channel.downloadTask(with: track.previewURL)
-//        download.task?.resume()
-//        download.isDownloading = true
-//        activeDownloads[download.track.previewURL] = download
+    init(track: Track, channel: URLSession) {
+        self.track = track
+        self.channel = channel
+        self.task = channel.downloadTask(with: track.previewURL)
     }
     
-    func cancel() {
-//        guard let download = activeDownloads[track.previewURL] else { return }
-//        download.task?.cancel() //FIXME: Encapsulation Violation
-//        activeDownloads[track.previewURL] = nil
-    }
+    func state() -> URLSessionTask.State { return task.state }
     
-    func pause() {
-//        download.task?.cancel(byProducingResumeData: { data in download.resumeData = data }) //FIXME: Encapsulation Violation
-//        download.isDownloading = false //FIXME: Encapsulation Violation
-    }
+    func progress() -> Progress { return task.progress }
     
-    func resume() {
-//        if let resumeData = download.resumeData {
-//          download.task = channel.downloadTask(withResumeData: resumeData)
-//        } else {
-//          download.task = channel.downloadTask(with: download.track.previewURL)
-//        }
-//        download.task?.resume() //FIXME: Encapsulation Violation
-//        download.isDownloading = true //FIXME: Encapsulation Violation
-    }
+    func start() { task.resume() }
+    
+    func cancel() { task.cancel() }
+    
+    func pause() { task.suspend() }
+    
+    func resume() { task.resume() }
 }
