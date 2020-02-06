@@ -18,15 +18,14 @@ class SearchEngine: UISearchController
     let appleMusic: AppleMusic
     weak var searchEngineDelegate: SearchEngineDelegate?
     
-    init(searchResultsScreen: UIViewController?, appleMusic: AppleMusic) {
+    init(appleMusic: AppleMusic) {
         self.appleMusic = appleMusic
-        super.init(searchResultsController: searchResultsScreen)
-        let searchBar = self.searchBar
+        super.init(searchResultsController: nil)
         searchBar.placeholder = "Song name or artist"
         searchBar.showsCancelButton = true
         searchBar.delegate = self
-        self.obscuresBackgroundDuringPresentation = false
-        self.hidesNavigationBarDuringPresentation = true
+        obscuresBackgroundDuringPresentation = false
+        hidesNavigationBarDuringPresentation = true
     }
     required init?(coder: NSCoder) { fatalError() }
 }
@@ -43,7 +42,7 @@ extension SearchEngine: UISearchBarDelegate
             }
             var tracks2 = Tracks()  //FIXME: Constructor Please
             tracks2.tracks = tracks
-            self?.searchEngineDelegate?.update(tracks: tracks2)
+            self?.searchEngineDelegate?.update(tracks: tracks2) //The MusicSearchScreen is the Delegate
         }
     }
 }

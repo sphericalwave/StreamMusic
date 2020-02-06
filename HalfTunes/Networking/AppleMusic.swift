@@ -7,17 +7,17 @@ class AppleMusic
     var dataTask: URLSessionDataTask? //FIXME: Be Immutable, URLSessionDataTask >> Download
     var errorMessage = ""             //FIXME: Be Immutable
     var tracks: [Track] = []          //FIXME: Be Immutable
-    
     let channel: URLSession //FIXME: Change type to Channel
     
     init(channel: URLSession) {
         self.channel = channel
     }
     
+    //Called By Z SearchEngine
     func tracksMatching(searchTerm: String, completion: @escaping ([Track]?, String) -> Void) {
         dataTask?.cancel()  //cancel current data task...better name?
         
-        var urlComponents = URLComponents(string: "https://itunes.apple.com/search")  //FIXME: Framework demands var
+        var urlComponents = URLComponents(string: "https://itunes.apple.com/search")  //FIXME: Framework demands var rather than a constructor
         urlComponents?.query = "media=music&entity=song&term=\(searchTerm)"
         guard let url = urlComponents?.url else { return }
         
@@ -29,8 +29,6 @@ class AppleMusic
                 self?.errorMessage += "DataTask error: " + error.localizedDescription + "\n"  //FIXME: Be Immutable
                 return
             }
-            //print(response) //HTTP Response
-            //print(String(decoding: data, as: UTF8.self))
             self?.updateSearchResults(data)
             DispatchQueue.main.async { completion(self?.tracks, self?.errorMessage ?? "") }
         }

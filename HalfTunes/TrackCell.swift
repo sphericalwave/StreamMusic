@@ -21,7 +21,6 @@ class TrackCell: UIViewController
         self.files = files  //FIXME: Naming is questionable
         super.init(nibName: "TrackCell", bundle: nil)
     }
-    
     required init?(coder: NSCoder) { fatalError() }
     
     override func viewDidLoad() {
@@ -29,25 +28,17 @@ class TrackCell: UIViewController
         configure(track: track, downloaded: false, download: nil) //FIXME:
     }
     
-    @IBAction func cancelTapped(_ sender: AnyObject) {
+    @IBAction func cancelTapped() {
         downloadedTracks.cancelDownload(track)
-        //reload(indexPath.row)
     }
     
-    @IBAction func downloadTapped(_ sender: AnyObject) {
+    @IBAction func downloadTapped() {
         downloadedTracks.startDownload(track)
-        //reload(indexPath.row)
     }
     
-    @IBAction func pauseOrResumeTapped(_ sender: AnyObject) {
-        if (pauseButton.titleLabel?.text == "Pause") {
-            downloadedTracks.pauseDownload(track)
-            //reload(indexPath.row)
-        }
-        else {
-            downloadedTracks.resumeDownload(track)
-            //reload(indexPath.row)
-        }
+    @IBAction func pauseOrResumeTapped() {
+        if (pauseButton.titleLabel?.text == "Pause") { downloadedTracks.pauseDownload(track) }
+        else { downloadedTracks.resumeDownload(track) }
     }
     
     //FIXME: This is too big

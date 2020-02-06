@@ -8,7 +8,6 @@ class MusicSearchScreen: UITableViewController
     var tracks: Tracks? //FIXME: Be immutable
     let searchEngine: SearchEngine
     let downloadedTracks: DownloadedTracks
-    let playerViewController = AVPlayerViewController() //FIXME: Inject
     
     init(searchEngine: SearchEngine, downloadedTracks: DownloadedTracks) {
         self.searchEngine = searchEngine
@@ -20,6 +19,14 @@ class MusicSearchScreen: UITableViewController
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: TrackCell.id)
     }
     required init?(coder: NSCoder) { fatalError() }
+    
+    func playTrack(url: URL) {
+        let audioPlayerScreen = AVPlayerViewController() //FIXME: Inject?
+        present(audioPlayerScreen, animated: true, completion: nil)
+        let player = AVPlayer(url: url)
+        audioPlayerScreen.player = player
+        player.play()
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -42,13 +49,6 @@ class MusicSearchScreen: UITableViewController
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 81.0
-    }
-    
-    func playTrack(url: URL) {
-        present(playerViewController, animated: true, completion: nil)
-        let player = AVPlayer(url: url)
-        playerViewController.player = player
-        player.play()
     }
 }
 

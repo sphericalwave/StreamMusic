@@ -11,18 +11,3 @@ struct AppleMusicResponse: Codable
       case tracks = "results"
   }
 }
-
-struct Track2: Codable
-{
-    let artist: String
-    //let index: Int
-    let name: String
-    let previewURL: URL
-    
-    private enum CodingKeys: String, CodingKey {
-        case artist = "artistName"
-        //case index
-        case name = "trackName"
-        case previewURL = "previewUrl"
-    }
-}

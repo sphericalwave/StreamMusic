@@ -7,7 +7,7 @@ class StreamMusic: UINavigationController
         let sRS = UIViewController()
         sRS.view.backgroundColor = .green
         let channel = URLSession(configuration: .default)
-        let sE = SearchEngine(searchResultsScreen: nil, appleMusic: AppleMusic(channel: channel))
+        let sE = SearchEngine(appleMusic: AppleMusic(channel: channel))
         
         let configuration = URLSessionConfiguration.background(withIdentifier: "com.sphericalwave.StreamMusic.bgSession")
         let backgroundChannel = URLSession(configuration: configuration)
