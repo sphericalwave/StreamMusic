@@ -1,12 +1,14 @@
 
-
 import UIKit
+import AVFoundation
+import AVKit
 
 class MusicSearchScreen: UITableViewController
 {
-    var tracks: Tracks? //[Track] = [] //FIXME: Be immutable
+    var tracks: Tracks? //FIXME: Be immutable
     let searchEngine: SearchEngine
     let downloadService: DownloadService
+    let playerViewController = AVPlayerViewController() //FIXME: Inject
     
     init(searchEngine: SearchEngine, downloadService: DownloadService) {
         self.searchEngine = searchEngine
@@ -17,7 +19,6 @@ class MusicSearchScreen: UITableViewController
         navigationItem.searchController = searchEngine
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: TrackCell.id)
     }
-    
     required init?(coder: NSCoder) { fatalError() }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -34,16 +35,20 @@ class MusicSearchScreen: UITableViewController
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //FIXME: get refference back to cell
-        //    let trackCell = data.cellForRow(at: indexPath)
-        //    swCell.didSelect()
-        //
-        // trackCell.playTrack()
+        guard let trackUrl = tracks?.urlForTrack(at: indexPath) else { fatalError() }
+        playTrack(url: trackUrl)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 81.0
+    }
+    
+    func playTrack(url: URL) {
+        present(playerViewController, animated: true, completion: nil)
+        let player = AVPlayer(url: url)
+        playerViewController.player = player
+        player.play()
     }
 }
 

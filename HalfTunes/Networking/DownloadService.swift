@@ -14,14 +14,14 @@ class DownloadService: NSObject
 
   func cancelDownload(_ track: Track) {
     guard let download = activeDownloads[track.previewURL] else { return }
-    download.task?.cancel()
+    download.task?.cancel() //FIXME: Encapsulation Violation
     activeDownloads[track.previewURL] = nil
   }
   
   func pauseDownload(_ track: Track) {
     guard let download = activeDownloads[track.previewURL], download.isDownloading else { return }
-    download.task?.cancel(byProducingResumeData: { data in download.resumeData = data })
-    download.isDownloading = false
+    download.task?.cancel(byProducingResumeData: { data in download.resumeData = data }) //FIXME: Encapsulation Violation
+    download.isDownloading = false //FIXME: Encapsulation Violation
   }
   
   func resumeDownload(_ track: Track) {
@@ -31,11 +31,12 @@ class DownloadService: NSObject
     } else {
       download.task = channel.downloadTask(with: download.track.previewURL)
     }
-    download.task?.resume()
-    download.isDownloading = true
+    download.task?.resume() //FIXME: Encapsulation Violation
+    download.isDownloading = true //FIXME: Encapsulation Violation
   }
   
   func startDownload(_ track: Track) {
+    //FIXME: Push All This inside the download
     let download = Download(track: track)
     download.task = channel.downloadTask(with: track.previewURL)
     download.task?.resume()

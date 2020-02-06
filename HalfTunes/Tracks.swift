@@ -4,10 +4,14 @@ import Foundation
 struct Tracks
 {
     var tracks: [Track] = [] //FIXME: Be immutable
+    let files = Files() //FIXME: Inject
     
-//    func track(at index: Int) -> Track {
-//        return tracks[index]
-//    }
+    func urlForTrack(at indexPath: IndexPath) -> URL {
+        let track = tracks[indexPath.row]
+        //let url = files.file(for url: ) //FIXME: Improve Naming
+        //let track.url
+        return track.previewURL
+    }
 }
 
 extension Tracks: RandomAccessCollection

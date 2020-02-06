@@ -1,7 +1,5 @@
 
 import UIKit
-import AVFoundation
-import AVKit
 
 class TrackCell: UIViewController
 {
@@ -52,6 +50,7 @@ class TrackCell: UIViewController
         }
     }
     
+    //FIXME: This is too big
     func configure(track: Track, downloaded: Bool, download: Download?) {
         titleLabel.text = track.name
         artistLabel.text = track.artist
@@ -77,14 +76,5 @@ class TrackCell: UIViewController
     func updateDisplay(progress: Float, totalSize : String) {
         progressView.progress = progress
         progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totalSize)
-    }
-    
-    func playTrack() {
-        let playerViewController = AVPlayerViewController()
-        present(playerViewController, animated: true, completion: nil)
-        let url = files.file(for: track.previewURL) //FIXME: Improve Naming
-        let player = AVPlayer(url: url)
-        playerViewController.player = player
-        player.play()
     }
 }
