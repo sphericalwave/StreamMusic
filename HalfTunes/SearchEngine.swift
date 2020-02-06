@@ -15,11 +15,11 @@ protocol SearchEngineDelegate: AnyObject
 
 class SearchEngine: UISearchController
 {
-    let queryService: QueryService
+    let appleMusic: AppleMusic
     weak var searchEngineDelegate: SearchEngineDelegate?
     
-    init(searchResultsScreen: UIViewController?, queryService: QueryService) {
-        self.queryService = queryService
+    init(searchResultsScreen: UIViewController?, appleMusic: AppleMusic) {
+        self.appleMusic = appleMusic
         super.init(searchResultsController: searchResultsScreen)
         let searchBar = self.searchBar
         searchBar.placeholder = "Song name or artist"
@@ -36,7 +36,7 @@ extension SearchEngine: UISearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text else { return }
-        queryService.searchResults(searchTerm: searchText) { [weak self] tracks, errorMessage in
+        appleMusic.searchResults(searchTerm: searchText) { [weak self] tracks, errorMessage in
             guard let tracks = tracks else {
                 print("Search error: " + errorMessage)
                 return

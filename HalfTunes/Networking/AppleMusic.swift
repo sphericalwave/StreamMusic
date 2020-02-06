@@ -2,14 +2,17 @@
 import Foundation
 
 /// Runs query data task, and stores results in array of Tracks
-class QueryService
+class AppleMusic
 {
-    let defaultSession = URLSession(configuration: .default)
-    var dataTask: URLSessionDataTask? //FIXME: Be Immutable
+    var dataTask: URLSessionDataTask? //FIXME: Be Immutable, URLSessionDataTask >> Download
     var errorMessage = ""             //FIXME: Be Immutable
     var tracks: [Track] = []          //FIXME: Be Immutable
     
-    typealias JSONDictionary = [String: Any]
+    let channel: URLSession //FIXME: Change type to Channel
+    
+    init(channel: URLSession) {
+        self.channel = channel
+    }
     
     func searchResults(searchTerm: String, completion: @escaping ([Track]?, String) -> Void) {
         dataTask?.cancel()  //cancel current data task...better name?
@@ -18,7 +21,7 @@ class QueryService
         urlComponents?.query = "media=music&entity=song&term=\(searchTerm)"
         guard let url = urlComponents?.url else { return }
         
-        dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
+        dataTask = channel.dataTask(with: url) { [weak self] data, response, error in
             defer { self?.dataTask = nil } //FIXME: nil
             guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 guard let error = error else { fatalError() }
@@ -27,7 +30,7 @@ class QueryService
                 return
             }
             //print(response) //HTTP Response
-            print(String(decoding: data, as: UTF8.self))
+            //print(String(decoding: data, as: UTF8.self))
             self?.updateSearchResults(data)
             DispatchQueue.main.async { completion(self?.tracks, self?.errorMessage ?? "") }
         }

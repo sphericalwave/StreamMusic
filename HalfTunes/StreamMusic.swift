@@ -6,11 +6,12 @@ class StreamMusic: UINavigationController
     init() {
         let sRS = UIViewController()
         sRS.view.backgroundColor = .green
-        let sE = SearchEngine(searchResultsScreen: nil, queryService: QueryService())
+        let channel = URLSession(configuration: .default)
+        let sE = SearchEngine(searchResultsScreen: nil, appleMusic: AppleMusic(channel: channel))
         
         let configuration = URLSessionConfiguration.background(withIdentifier: "com.sphericalwave.StreamMusic.bgSession")
-        let channel = URLSession(configuration: configuration)
-        let downloadService = DownloadService(channel: channel)
+        let backgroundChannel = URLSession(configuration: configuration)
+        let downloadService = DownloadService(channel: backgroundChannel)   //FIXME: Do i need two channels?
         //channel.delegate = downloadService  //FIXME: That's a challenge
         let mSS = MusicSearchScreen(searchEngine: sE, downloadService: downloadService)
         
