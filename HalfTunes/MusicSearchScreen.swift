@@ -7,11 +7,11 @@ class MusicSearchScreen: UITableViewController
 {
     var tracks: Tracks? //FIXME: Be immutable
     let searchEngine: SearchEngine
-    let downloadedTracks: LocalTracks
+    let localTracks: LocalTracks
     
-    init(searchEngine: SearchEngine, downloadedTracks: LocalTracks) {
+    init(searchEngine: SearchEngine, localTracks: LocalTracks) {
         self.searchEngine = searchEngine
-        self.downloadedTracks = downloadedTracks
+        self.localTracks = localTracks
         //self.tracks = tracks
         super.init(nibName: nil, bundle: nil)
         title = "Music Search"
@@ -32,7 +32,7 @@ class MusicSearchScreen: UITableViewController
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.id, for: indexPath)
         guard let track = tracks?[indexPath.row] else { fatalError() }
-        let trackCell = TrackCell(track: track, downloadedTracks: downloadedTracks, files: Files()) //FIXME: Inject Files
+        let trackCell = TrackCell(track: track, downloadedTracks: localTracks, files: Files()) //FIXME: Inject Files
         embed(viewController: trackCell, inContainerView: cell.contentView)
         return cell
     }

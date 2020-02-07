@@ -15,8 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession handleEventsForBackgroundURLSessionidentifier: String, completionHandler: @escaping () -> Void) {
         //FIXME: What is this doing?
-        //it's completing downloads in the background
-        //how?
         backgroundSessionCompletionHandler = completionHandler
     }
     
@@ -28,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let localTracks = LocalTracks(channel: backgroundChannel)   //FIXME: Do i need two channels?
         //channel.delegate = downloadService  //FIXME: That's a challenge
         
-        let musicSearchScreen = MusicSearchScreen(searchEngine: sE, downloadedTracks: localTracks)
+        let musicSearchScreen = MusicSearchScreen(searchEngine: sE, localTracks: localTracks)
         sE.searchEngineDelegate = musicSearchScreen
         return BatNav(mainScreen: musicSearchScreen)
     }
