@@ -3,7 +3,7 @@ import Foundation
 
 class AppleMusic: NSObject
 {
-    let channel: URLSession //FIXME: Change type to Channel
+    let channel: URLSession //FIXME: Change type to Channel?
     
     init(channel: URLSession) { self.channel = channel }
     

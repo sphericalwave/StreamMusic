@@ -2,8 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,21 +26,35 @@
                                     <constraint firstAttribute="width" secondItem="skm-4Q-SEq" secondAttribute="height" multiplier="1:1" id="YQ5-Ev-7z5"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MusicStream" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROG-pf-o90">
+                                <rect key="frame" x="91" y="78" width="193" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <color key="textColor" name="rw-light"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spherical Wave Engineering" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1i-g3-4Zm">
+                                <rect key="frame" x="81" y="548" width="213" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" name="rw-light"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="thr-yb-z25" secondAttribute="trailing" id="0Yk-op-Sbr"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0tf-Kh-S2U"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="20" id="45c-ps-A1j"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="skm-4Q-SEq" secondAttribute="trailing" constant="20" id="Aji-Ek-k2q"/>
+                            <constraint firstItem="G1i-g3-4Zm" firstAttribute="top" secondItem="skm-4Q-SEq" secondAttribute="bottom" constant="36" id="9dE-pj-Qug"/>
                             <constraint firstAttribute="bottom" secondItem="thr-yb-z25" secondAttribute="bottom" id="FXS-f4-xfH"/>
+                            <constraint firstItem="G1i-g3-4Zm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HUg-XM-wup"/>
+                            <constraint firstItem="ROG-pf-o90" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JQW-Cp-YTK"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="width" secondItem="skm-4Q-SEq" secondAttribute="height" multiplier="1:1" id="Q4h-h8-kju"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="9" id="QFD-l4-qEu"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="skm-4Q-SEq" secondAttribute="bottom" constant="20" id="TPw-KF-H85"/>
                             <constraint firstItem="thr-yb-z25" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bHm-5w-uXH"/>
                             <constraint firstItem="thr-yb-z25" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="mnU-3N-lrW"/>
+                            <constraint firstItem="skm-4Q-SEq" firstAttribute="top" secondItem="ROG-pf-o90" secondAttribute="bottom" constant="36" id="r9q-oX-JcO"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="skm-4Q-SEq" secondAttribute="trailing" constant="9" id="rXM-Fq-Xmm"/>
-                            <constraint firstItem="skm-4Q-SEq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="uY3-7w-Cr7"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="wkC-oo-tPK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
@@ -54,5 +68,8 @@
     <resources>
         <image name="music.note.list" catalog="system" width="64" height="56"/>
         <image name="rwdevcon-bg" width="1104" height="1104"/>
+        <namedColor name="rw-light">
+            <color red="0.94901960784313721" green="0.96470588235294119" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

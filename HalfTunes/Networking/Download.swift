@@ -1,6 +1,7 @@
 
 import Foundation
 
+//FIXME: This class is wildly redundant
 class Download
 {
     let task: URLSessionDownloadTask
