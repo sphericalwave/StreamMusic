@@ -11,7 +11,7 @@ class AppleMusicSearch
         self.urlComponents = urlComponents
     }
     
-    func URL() -> URL {
+    func url() -> URL {
         guard let url = urlComponents.url else { fatalError() }
         return url
     }

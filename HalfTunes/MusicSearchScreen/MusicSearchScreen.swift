@@ -29,7 +29,8 @@ class MusicSearchScreen: UITableViewController
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.id, for: indexPath)
         guard let track = tracks?[indexPath.row] else { fatalError() }
-        let trackCell = TrackCell(track: track)         embed(viewController: trackCell, inContainerView: cell.contentView)
+        let trackCell = TrackCell(track: track)
+        embed(viewController: trackCell, inContainerView: cell.contentView)
         return cell
     }
     

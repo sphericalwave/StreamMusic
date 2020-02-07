@@ -28,10 +28,10 @@
                     <rect key="frame" x="29" y="53" width="374" height="154"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SNZ-J6-XKU">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="145.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="253.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="02g-p6-til">
-                                    <rect key="frame" x="0.0" y="54.5" width="33.5" height="36.5"/>
+                                    <rect key="frame" x="0.0" y="108.5" width="33.5" height="36.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKa-FN-kT0">
                                             <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
@@ -48,42 +48,42 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="czO-ip-Nnd">
-                                    <rect key="frame" x="248" y="0.0" width="126" height="145.5"/>
+                                    <rect key="frame" x="238" y="105" width="136" height="43.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="gQE-d5-cZv">
-                                            <rect key="frame" x="0.0" y="0.0" width="126" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="22"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0q-43-YPX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
-                                                    <state key="normal" title="Cancel">
-                                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="cancelTapped" destination="-1" eventType="touchUpInside" id="RhH-YF-hca"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-2c-Pkk">
-                                                    <rect key="frame" x="84" y="0.0" width="42" height="30"/>
-                                                    <state key="normal" title="Pause">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-2c-Pkk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
+                                                    <state key="normal" image="pause.circle" catalog="system">
                                                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="pauseOrResumeTapped" destination="-1" eventType="touchUpInside" id="osq-ex-Nf5"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0q-43-YPX">
+                                                    <rect key="frame" x="56" y="0.0" width="20" height="22"/>
+                                                    <state key="normal" image="x.circle" catalog="system">
+                                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="cancelTapped" destination="-1" eventType="touchUpInside" id="RhH-YF-hca"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-Mu-ni1">
+                                                    <rect key="frame" x="112" y="0.0" width="24" height="22"/>
+                                                    <state key="normal" image="icloud.and.arrow.down" catalog="system">
+                                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="downloadTapped" destination="-1" eventType="touchUpInside" id="djJ-TG-KPc"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-Mu-ni1">
-                                            <rect key="frame" x="57" y="66" width="69" height="30"/>
-                                            <state key="normal" title="Download">
-                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="downloadTapped" destination="-1" eventType="touchUpInside" id="djJ-TG-KPc"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="100% of 1.35MB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeQ-Zv-R04">
-                                            <rect key="frame" x="41.5" y="132" width="84.5" height="13.5"/>
+                                            <rect key="frame" x="51.5" y="30" width="84.5" height="13.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -109,4 +109,9 @@
             <point key="canvasLocation" x="278.26086956521743" y="-83.705357142857139"/>
         </view>
     </objects>
+    <resources>
+        <image name="icloud.and.arrow.down" catalog="system" width="64" height="56"/>
+        <image name="pause.circle" catalog="system" width="64" height="60"/>
+        <image name="x.circle" catalog="system" width="64" height="60"/>
+    </resources>
 </document>

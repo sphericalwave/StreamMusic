@@ -29,28 +29,40 @@ class TrackCell: UIViewController
     
     @IBAction func cancelTapped() {
         //track.cancelDownload()
-        pauseButton.setTitle("Resume", for: .normal)
+        //pauseButton.setTitle("Resume", for: .normal)
+        downloadButton.isHidden = false
+        pauseButton.isHidden = true
+        cancelButton.isHidden = false
     }
     
     @IBAction func downloadTapped() {
         //track.startDownload()
-        
+        downloadButton.isHidden = true
+        pauseButton.isHidden = false
+        cancelButton.isHidden = false
     }
     
     @IBAction func pauseOrResumeTapped() {
-        if (pauseButton.titleLabel?.text == "Pause") {
+        //FIXME: Toggle Behavior Belongs inside a decorated UIButton
+        //if ()
+        guard let play = UIImage(systemName: "play.circle") else { fatalError() }
+        pauseButton.setImage(play, for: .normal)
             //track.pauseDownload()
-        }
-        else {
+        //}
+        //else {
            //track.resumeDownload()
-        }
+        //}
     }
     
     //FIXME: This is too big
-    func updateUI() { //, downloaded: Bool, download: Download?) {
+    func updateUI() {
         titleLabel.text = track.name
         artistLabel.text = track.artist
-        
+        downloadButton.isHidden = false
+        pauseButton.isHidden = true
+        cancelButton.isHidden = true
+        progressView.progress = 0.3
+
         //if track.download.state == .completed
             //show a full progress bar
             //show delete button, hide pause, download & cancel buttons
