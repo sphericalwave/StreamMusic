@@ -12,10 +12,10 @@ class TrackCell: UIViewController
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
     let track: Track
-    let downloadedTracks: DownloadedTracks   //FIXME: matching naming to type
+    let downloadedTracks: LocalTracks   //FIXME: matching naming to type
     let files: Files
     
-    init(track: Track, downloadedTracks: DownloadedTracks, files: Files) {
+    init(track: Track, downloadedTracks: LocalTracks, files: Files) {
         self.track = track
         self.downloadedTracks = downloadedTracks
         self.files = files  //FIXME: Naming is questionable

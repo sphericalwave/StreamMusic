@@ -1,52 +1,27 @@
 
-import UIKit
+import Foundation
 
-/// Downloads song snippets, and stores in local file.
-/// Allows cancel, pause, resume download.
-class DownloadedTracks: NSObject
+class Download
 {
-    var activeDownloads: [URL: Download] = [ : ]  //FIXME: Be Immutable...make a ActiveDownloads class
+    let task: URLSessionDownloadTask
+    let track: Track
     let channel: URLSession
     
-    init(channel: URLSession) { self.channel = channel }
-    
-    func cancelDownload(_ track: Track) {
-        guard let download = activeDownloads[track.previewURL] else { fatalError() }
-        download.cancel()
-        activeDownloads[track.previewURL] = nil   //remove Download
+    init(track: Track, channel: URLSession) {
+        self.track = track
+        self.channel = channel
+        self.task = channel.downloadTask(with: track.previewURL)
     }
     
-    func pauseDownload(_ track: Track) {
-        guard let download = activeDownloads[track.previewURL] else { fatalError() }
-        download.pause()
-    }
-    
-    func resumeDownload(_ track: Track) {
-        guard let download = activeDownloads[track.previewURL] else { return }
-        download.resume()
-    }
-    
-    func startDownload(_ track: Track) {
-        let download = Download(track: track, channel: channel)
-        activeDownloads[download.track.previewURL] = download
-    }
+    func state() -> URLSessionTask.State { return task.state }
+    func progress() -> Progress { return task.progress }
+    func start() { task.resume() }
+    func cancel() { task.cancel() }
+    func pause() { task.suspend() }
+    func resume() { task.resume() }
 }
 
-extension DownloadedTracks: URLSessionDelegate
-{
-    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        //FIXME: This is awful
-        //    DispatchQueue.main.async {
-        //      if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-        //        let completionHandler = appDelegate.backgroundSessionCompletionHandler {
-        //        appDelegate.backgroundSessionCompletionHandler = nil
-        //        completionHandler()
-        //      }
-        //    }
-    }
-}
-
-extension DownloadedTracks: URLSessionDownloadDelegate
+extension AppDelegate: URLSessionDownloadDelegate   //FIXME: DownloadDelegate
 {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didFinishDownloadingTo location: URL)
@@ -55,6 +30,11 @@ extension DownloadedTracks: URLSessionDownloadDelegate
         //    let download = downloadService.activeDownloads[sourceURL]
         //    downloadService.activeDownloads[sourceURL] = nil  //removing from active downloads
         //
+        //    let path = files.path(for: url)
+        //      files.removeFile(at: path)
+        //      files.copyFile(at: path)
+        //      update the tableViewCell
+        
         //    let destinationURL = localFilePath(for: sourceURL)
         //    print(destinationURL)
         //

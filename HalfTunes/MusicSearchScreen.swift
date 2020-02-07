@@ -7,9 +7,9 @@ class MusicSearchScreen: UITableViewController
 {
     var tracks: Tracks? //FIXME: Be immutable
     let searchEngine: SearchEngine
-    let downloadedTracks: DownloadedTracks
+    let downloadedTracks: LocalTracks
     
-    init(searchEngine: SearchEngine, downloadedTracks: DownloadedTracks) {
+    init(searchEngine: SearchEngine, downloadedTracks: LocalTracks) {
         self.searchEngine = searchEngine
         self.downloadedTracks = downloadedTracks
         //self.tracks = tracks
