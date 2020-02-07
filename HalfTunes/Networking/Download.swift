@@ -4,10 +4,10 @@ import Foundation
 class Download
 {
     let task: URLSessionDownloadTask
-    let track: Track
+    let track: Track2
     let channel: URLSession
     
-    init(track: Track, channel: URLSession) {
+    init(track: Track2, channel: URLSession) {
         self.track = track
         self.channel = channel
         self.task = channel.downloadTask(with: track.previewURL)

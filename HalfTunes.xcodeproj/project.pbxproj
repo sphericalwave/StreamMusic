@@ -21,6 +21,7 @@
 		AF7DC3ED23EAEB6500C562A7 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DC3EC23EAEB6500C562A7 /* UIViewController+Extensions.swift */; };
 		AF7DC3EF23EAED3B00C562A7 /* BatNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DC3EE23EAED3B00C562A7 /* BatNav.swift */; };
 		AF7DC3F123EAEF5600C562A7 /* SearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DC3F023EAEF5600C562A7 /* SearchEngine.swift */; };
+		AFB8AA9623EDB48900C87BAC /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB8AA9523EDB48900C87BAC /* AppleMusicSearch.swift */; };
 		AFEF6D8623ED0F8D00646742 /* WebChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF6D8523ED0F8D00646742 /* WebChannel.swift */; };
 		AFFBDF7223EB37B500F182A1 /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDF7123EB37B500F182A1 /* Tracks.swift */; };
 		AFFBDF7423EB3C7000F182A1 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDF7323EB3C7000F182A1 /* SwiftUIView.swift */; };
@@ -51,12 +52,13 @@
 		55E768D2227DDAAA00517F98 /* Download.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AF0D49FD23EB2F8500CDA6A4 /* TrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		AF0D49FF23EB32FE00CDA6A4 /* Files.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; tabWidth = 4; };
-		AF456F3023EC74ED003FA63E /* AppleMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusic.swift; sourceTree = "<group>"; };
+		AF456F3023EC74ED003FA63E /* AppleMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AppleMusic.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AF456F3223EC7AAC003FA63E /* MusicSearchScreenData.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = MusicSearchScreenData.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AF456F3423EC8350003FA63E /* Track2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track2.swift; sourceTree = "<group>"; };
 		AF7DC3EC23EAEB6500C562A7 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; tabWidth = 4; };
 		AF7DC3EE23EAED3B00C562A7 /* BatNav.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = BatNav.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AF7DC3F023EAEF5600C562A7 /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = SearchEngine.swift; sourceTree = "<group>"; tabWidth = 4; };
+		AFB8AA9523EDB48900C87BAC /* AppleMusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicSearch.swift; sourceTree = "<group>"; };
 		AFEF6D8523ED0F8D00646742 /* WebChannel.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = WebChannel.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AFFBDF7123EB37B500F182A1 /* Tracks.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = Tracks.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AFFBDF7323EB3C7000F182A1 /* SwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				AFEF6D8523ED0F8D00646742 /* WebChannel.swift */,
 				AF456F3023EC74ED003FA63E /* AppleMusic.swift */,
+				AFB8AA9523EDB48900C87BAC /* AppleMusicSearch.swift */,
 				55138330227DD51800A739ED /* LocalTracks.swift */,
 				55E768D2227DDAAA00517F98 /* Download.swift */,
 			);
@@ -325,6 +328,7 @@
 				AFFBDF8623EC3F2E00F182A1 /* AppleMusicResponse.swift in Sources */,
 				55E768D3227DDAAA00517F98 /* Download.swift in Sources */,
 				AF456F3523EC8350003FA63E /* Track2.swift in Sources */,
+				AFB8AA9623EDB48900C87BAC /* AppleMusicSearch.swift in Sources */,
 				55138331227DD51800A739ED /* LocalTracks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

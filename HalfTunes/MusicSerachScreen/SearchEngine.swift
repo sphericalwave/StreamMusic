@@ -35,14 +35,14 @@ extension SearchEngine: UISearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let string = searchBar.text else { return }
-        appleMusic.tracksMatching(searchTerm: string) { [weak self] tracks, errorMessage in
-            guard let tracks = tracks else {
-                print("Search error: " + errorMessage)
-                return
-            }
-            var tracks2 = Tracks()  //FIXME: Constructor Please
-            tracks2.tracks = tracks
-            self?.searchEngineDelegate?.update(tracks: tracks2) //The MusicSearchScreen is the Delegate
+        appleMusic.tracksMatching(searchTerm: string) { [weak self] tracks in
+//            guard let tracks = tracks else {
+//                print("Search error: " + errorMessage)
+//                return
+//            }
+//            var tracks2 = Tracks()  //FIXME: Constructor Please
+//            tracks2.tracks = tracks
+            self?.searchEngineDelegate?.update(tracks: tracks) //The MusicSearchScreen is the Delegate
         }
     }
 }

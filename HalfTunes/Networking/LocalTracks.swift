@@ -10,23 +10,23 @@ class LocalTracks: NSObject
     
     init(channel: URLSession) { self.channel = channel }
     
-    func startDownload(_ track: Track) {
+    func startDownload(_ track: Track2) {
         let download = Download(track: track, channel: channel)
         //FIXME: download.task.delegate
         activeDownloads[download.track.previewURL] = download
     }
     
-    func pauseDownload(_ track: Track) {
+    func pauseDownload(_ track: Track2) {
         guard let download = activeDownloads[track.previewURL] else { fatalError() }
         download.pause()
     }
     
-    func resumeDownload(_ track: Track) {
+    func resumeDownload(_ track: Track2) {
         guard let download = activeDownloads[track.previewURL] else { return }
         download.resume()
     }
     
-    func cancelDownload(_ track: Track) {
+    func cancelDownload(_ track: Track2) {
         guard let download = activeDownloads[track.previewURL] else { fatalError() }
         download.cancel()
         activeDownloads[track.previewURL] = nil   //remove Download
@@ -35,6 +35,7 @@ class LocalTracks: NSObject
 
 extension LocalTracks: URLSessionDownloadDelegate   //FIXME: DownloadDelegate
 {
+    //move file to a permanent location in app’s sandbox container directory
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didFinishDownloadingTo location: URL)
     {

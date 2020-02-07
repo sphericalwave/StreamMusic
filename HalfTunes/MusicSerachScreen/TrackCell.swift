@@ -11,11 +11,11 @@ class TrackCell: UIViewController
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
-    let track: Track
+    let track: Track2
     let downloadedTracks: LocalTracks   //FIXME: matching naming to type
     let files: Files
     
-    init(track: Track, downloadedTracks: LocalTracks, files: Files) {
+    init(track: Track2, downloadedTracks: LocalTracks, files: Files) {
         self.track = track
         self.downloadedTracks = downloadedTracks
         self.files = files  //FIXME: Naming is questionable
@@ -38,7 +38,7 @@ class TrackCell: UIViewController
     }
     
     //FIXME: This is too big
-    func configure(track: Track, downloaded: Bool, download: Download?) {
+    func configure(track: Track2, downloaded: Bool, download: Download?) {
         titleLabel.text = track.name
         artistLabel.text = track.artist
 //        var showDownloadControls = false      // Show/hide download controls Pause/Resume, Cancel buttons, progress info.
