@@ -22,11 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let defaultChannel = URLSession(configuration: .default, delegate: nil, delegateQueue: nil) //(configuration: .default)
         let sE = SearchEngine(appleMusic: AppleMusic(channel: defaultChannel))
         
-        let backgroundChannel = URLSession(configuration: .background(withIdentifier: "com.sphericalwave.StreamMusic.session"), delegate: self, delegateQueue: nil)
-        let localTracks = LocalTracks(channel: backgroundChannel)   //FIXME: Do i need two channels?
+        //let backgroundChannel = URLSession(configuration: .background(withIdentifier: "com.sphericalwave.StreamMusic.session"), delegate: self, delegateQueue: nil)
+        //let localTracks = LocalTracks(channel: backgroundChannel)   //FIXME: Do i need two channels?
         //channel.delegate = downloadService  //FIXME: That's a challenge
         
-        let musicSearchScreen = MusicSearchScreen(searchEngine: sE, localTracks: localTracks)
+        let musicSearchScreen = MusicSearchScreen(searchEngine: sE) //, localTracks: localTracks)
         sE.searchEngineDelegate = musicSearchScreen
         return BatNav(mainScreen: musicSearchScreen)
     }

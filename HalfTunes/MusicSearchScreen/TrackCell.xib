@@ -28,10 +28,10 @@
                     <rect key="frame" x="29" y="53" width="374" height="154"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SNZ-J6-XKU">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="154"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="145.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="02g-p6-til">
-                                    <rect key="frame" x="0.0" y="59" width="33.5" height="36.5"/>
+                                    <rect key="frame" x="0.0" y="54.5" width="33.5" height="36.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKa-FN-kT0">
                                             <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
@@ -48,12 +48,12 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="czO-ip-Nnd">
-                                    <rect key="frame" x="305" y="62" width="69" height="30"/>
+                                    <rect key="frame" x="248" y="0.0" width="126" height="145.5"/>
                                     <subviews>
-                                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="gQE-d5-cZv">
-                                            <rect key="frame" x="69" y="0.0" width="0.0" height="0.0"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="gQE-d5-cZv">
+                                            <rect key="frame" x="0.0" y="0.0" width="126" height="30"/>
                                             <subviews>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0q-43-YPX">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0q-43-YPX">
                                                     <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
                                                     <state key="normal" title="Cancel">
                                                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,8 +62,8 @@
                                                         <action selector="cancelTapped" destination="-1" eventType="touchUpInside" id="RhH-YF-hca"/>
                                                     </connections>
                                                 </button>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-2c-Pkk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-2c-Pkk">
+                                                    <rect key="frame" x="84" y="0.0" width="42" height="30"/>
                                                     <state key="normal" title="Pause">
                                                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -74,7 +74,7 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-Mu-ni1">
-                                            <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
+                                            <rect key="frame" x="57" y="66" width="69" height="30"/>
                                             <state key="normal" title="Download">
                                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
@@ -82,8 +82,8 @@
                                                 <action selector="downloadTapped" destination="-1" eventType="touchUpInside" id="djJ-TG-KPc"/>
                                             </connections>
                                         </button>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" text="100% of 1.35MB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeQ-Zv-R04">
-                                            <rect key="frame" x="-15.5" y="0.0" width="84.5" height="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="100% of 1.35MB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeQ-Zv-R04">
+                                            <rect key="frame" x="41.5" y="132" width="84.5" height="13.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -92,8 +92,8 @@
                                 </stackView>
                             </subviews>
                         </stackView>
-                        <progressView hidden="YES" opaque="NO" tag="40" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HN6-su-Avc">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                        <progressView opaque="NO" tag="40" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HN6-su-Avc">
+                            <rect key="frame" x="0.0" y="152" width="374" height="2"/>
                         </progressView>
                     </subviews>
                 </stackView>
