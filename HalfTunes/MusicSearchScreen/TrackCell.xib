@@ -12,7 +12,7 @@
                 <outlet property="artistLabel" destination="i0h-aR-DeK" id="T3r-cs-IMB"/>
                 <outlet property="cancelButton" destination="m0q-43-YPX" id="thi-Hi-ncO"/>
                 <outlet property="downloadButton" destination="Xbm-Mu-ni1" id="DSn-TY-Rz0"/>
-                <outlet property="pauseButton" destination="X8O-2c-Pkk" id="Fjd-hA-z0u"/>
+                <outlet property="pauseButton" destination="X8O-2c-Pkk" id="dJ9-cK-Dzn"/>
                 <outlet property="progressLabel" destination="QeQ-Zv-R04" id="JLo-oI-aaO"/>
                 <outlet property="progressView" destination="HN6-su-Avc" id="xh2-fu-tHZ"/>
                 <outlet property="titleLabel" destination="LKa-FN-kT0" id="bqt-ly-PKS"/>
@@ -53,7 +53,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="gQE-d5-cZv">
                                             <rect key="frame" x="0.0" y="0.0" width="136" height="22"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-2c-Pkk">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-2c-Pkk" customClass="PlayButton" customModule="HalfTunes" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
                                                     <state key="normal" image="pause.circle" catalog="system">
                                                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

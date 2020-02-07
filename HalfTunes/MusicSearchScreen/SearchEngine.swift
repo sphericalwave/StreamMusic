@@ -16,7 +16,7 @@ protocol SearchEngineDelegate: AnyObject
 class SearchEngine: UISearchController
 {
     let appleMusic: AppleMusic
-    weak var searchEngineDelegate: SearchEngineDelegate?
+    weak var searchEngineDelegate: SearchEngineDelegate? //is MusicSearchScreen
     
     init(appleMusic: AppleMusic) {
         self.appleMusic = appleMusic
@@ -36,13 +36,7 @@ extension SearchEngine: UISearchBarDelegate
         searchBar.resignFirstResponder()
         guard let string = searchBar.text else { return }
         appleMusic.tracksMatching(searchTerm: string) { [weak self] tracks in
-//            guard let tracks = tracks else {
-//                print("Search error: " + errorMessage)
-//                return
-//            }
-//            var tracks2 = Tracks()  //FIXME: Constructor Please
-//            tracks2.tracks = tracks
-            self?.searchEngineDelegate?.update(tracks: tracks) //The MusicSearchScreen is the Delegate
+            self?.searchEngineDelegate?.update(tracks: tracks)
         }
     }
 }

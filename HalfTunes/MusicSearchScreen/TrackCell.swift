@@ -6,10 +6,10 @@ class TrackCell: UIViewController
     static let id = "TrackCell" //FIXME: Framework violating OOP
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!    //FIXME: Break Into Component Objects
-    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var pauseButton: PlayButton!
     
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
@@ -25,6 +25,7 @@ class TrackCell: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        pauseButton.delegate = self
     }
     
     @IBAction func cancelTapped() {
@@ -45,12 +46,12 @@ class TrackCell: UIViewController
     @IBAction func pauseOrResumeTapped() {
         //FIXME: Toggle Behavior Belongs inside a decorated UIButton
         //if ()
-        guard let play = UIImage(systemName: "play.circle") else { fatalError() }
-        pauseButton.setImage(play, for: .normal)
-            //track.pauseDownload()
+        // guard let play = UIImage(systemName: "play.circle") else { fatalError() }
+        // pauseButton.setImage(play, for: .normal)
+        //track.pauseDownload()
         //}
         //else {
-           //track.resumeDownload()
+        //track.resumeDownload()
         //}
     }
     
@@ -62,10 +63,10 @@ class TrackCell: UIViewController
         pauseButton.isHidden = true
         cancelButton.isHidden = true
         progressView.progress = 0.3
-
+        
         //if track.download.state == .completed
-            //show a full progress bar
-            //show delete button, hide pause, download & cancel buttons
+        //show a full progress bar
+        //show delete button, hide pause, download & cancel buttons
         
         //if track.state = .running
         
@@ -79,5 +80,15 @@ class TrackCell: UIViewController
     func updateDisplay(progress: Float, totalSize : String) {
         progressView.progress = progress
         progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totalSize)
+    }
+}
+
+extension TrackCell: PlayButtonDelegate
+{
+    func update(mode: PlayMode) {
+        switch mode {
+        case .play:     print("resume downloading")
+        case .pause:    print("pause downloading")
+        }
     }
 }

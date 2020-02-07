@@ -19,22 +19,23 @@ class PlayButton: UIButton
 {
     var mode: PlayMode //FIXME: Mutable State
     weak var delegate: PlayButtonDelegate?
+    let play = UIImage(systemName: "play.circle")!  //FIXME: Not great
+    let pause = UIImage(systemName: "pause.circle")!
     
     required init?(coder: NSCoder) {
-        self.mode = .play
+        self.mode = .pause
         super.init(coder: coder)
         self.addTarget(self, action: #selector(nextState), for: .touchUpInside)
+        self.setImage(pause, for: .normal)
     }
     
     @objc func nextState() {
         switch mode {
         case .play:
             mode = .pause
-            guard let pause = UIImage(systemName: "pause.circle") else { fatalError() } //FIXME: Fragile
             self.setImage(pause, for: .normal)
         case .pause:
             mode = .play
-            guard let play = UIImage(systemName: "play.circle") else { fatalError() } //FIXME: Fragile
             self.setImage(play, for: .normal)
         }
         guard delegate != nil else { fatalError("Connect Delegate") }
