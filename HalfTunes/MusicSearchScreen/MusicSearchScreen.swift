@@ -29,6 +29,7 @@ class MusicSearchScreen: UITableViewController
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.id, for: indexPath)
         guard let track = tracks?[indexPath.row] else { fatalError() }
+        //let localTrack = LocalTrack(track2: track, download: download, files: Files())
         let trackCell = TrackCell(track: track)
         embed(viewController: trackCell, inContainerView: cell.contentView)
         return cell
@@ -52,6 +53,7 @@ class MusicSearchScreen: UITableViewController
 extension MusicSearchScreen: SearchEngineDelegate
 {
     func update(tracks: Tracks) {
+        //let localTracks = tracks.tracks.map
         self.tracks = tracks
         tableView.reloadData()
         tableView.setContentOffset(CGPoint.zero, animated: false)

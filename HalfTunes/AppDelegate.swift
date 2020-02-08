@@ -4,7 +4,6 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
-    var backgroundSessionCompletionHandler: (() -> Void)?
     let window = UIWindow.init(frame: UIScreen.main.bounds)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -14,8 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     }
     
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession handleEventsForBackgroundURLSessionidentifier: String, completionHandler: @escaping () -> Void) {
-        //FIXME: What is this doing?
-        backgroundSessionCompletionHandler = completionHandler
+        //FIXME: How BackgroundSession Events
     }
     
     func app() -> UIViewController {
@@ -31,18 +29,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         return BatNav(mainScreen: musicSearchScreen)
     }
 }
-
-extension AppDelegate: URLSessionDelegate   //FIXME: ChannelDelegate
-{
-    //FIXME:
-    //when background transfer requires completes/requires credentials
-    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-//        DispatchQueue.main.async {
-//            let completionHandler = self.backgroundSessionCompletionHandler {
-//                appDelegate.backgroundSessionCompletionHandler = nil
-//                completionHandler()
-//            }
-//        }
-    }
-}
-

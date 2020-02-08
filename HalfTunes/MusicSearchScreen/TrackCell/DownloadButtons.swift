@@ -14,13 +14,20 @@ class DownloadButtons: UIViewController
     @IBOutlet weak var downloadButton: UIButton!    //FIXME: Break Into Component Objects
     @IBOutlet weak var pauseButton: PlayButton!
     
-    let download: URLSessionDownloadTask
+    //let download: URLSessionDownloadTask
+    //let track: LocalTrack
     
-    init(download: URLSessionDownloadTask) {
-        self.download = download
+    init() {
+        //self.download = download
+        //self.track = track
         super.init(nibName: "DownloadButtons", bundle: nil)
     }
     required init?(coder: NSCoder) { fatalError() }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        pauseButton.delegate = self
+    }
     
     @IBAction func cancelTapped() {
         //track.cancelDownload()
@@ -51,25 +58,35 @@ class DownloadButtons: UIViewController
     
     //FIXME: Push Hidding Behavior into Buttons
     func update() {
-        switch download.state {
-        case .running:
-            downloadButton.isHidden = true
-            pauseButton.isHidden = false
-            cancelButton.isHidden = false
-        case .suspended:
-            downloadButton.isHidden = true
-            pauseButton.isHidden = false
-            cancelButton.isHidden = false
-        case .canceling:
-            downloadButton.isHidden = true
-            pauseButton.isHidden = false
-            cancelButton.isHidden = false
-        case .completed:
-            downloadButton.isHidden = true
-            pauseButton.isHidden = false
-            cancelButton.isHidden = false
-        default:
-            fatalError()
+//        switch download.state {
+//        case .running:
+//            downloadButton.isHidden = true
+//            pauseButton.isHidden = false
+//            cancelButton.isHidden = false
+//        case .suspended:
+//            downloadButton.isHidden = true
+//            pauseButton.isHidden = false
+//            cancelButton.isHidden = false
+//        case .canceling:
+//            downloadButton.isHidden = true
+//            pauseButton.isHidden = false
+//            cancelButton.isHidden = false
+//        case .completed:
+//            downloadButton.isHidden = true
+//            pauseButton.isHidden = false
+//            cancelButton.isHidden = false
+//        default:
+//            fatalError()
+//        }
+    }
+}
+
+extension DownloadButtons: PlayButtonDelegate
+{
+    func update(mode: PlayMode) {
+        switch mode {
+        case .play:     print("resume downloading")
+        case .pause:    print("pause downloading")
         }
     }
 }

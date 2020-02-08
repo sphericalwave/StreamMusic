@@ -116,8 +116,8 @@
 			children = (
 				AF0D49FF23EB32FE00CDA6A4 /* Files.swift */,
 				AFFBDF7123EB37B500F182A1 /* Tracks.swift */,
-				AFFBDF8523EC3F2E00F182A1 /* AppleMusicResponse.swift */,
 				AF456F3423EC8350003FA63E /* Track2.swift */,
+				AFFBDF8523EC3F2E00F182A1 /* AppleMusicResponse.swift */,
 				AF98DDA923EDE370007BB2D3 /* LocalTrack.swift */,
 				55138330227DD51800A739ED /* LocalTracks.swift */,
 			);
@@ -133,17 +133,24 @@
 			path = AppleMusic;
 			sourceTree = "<group>";
 		};
+		AF98DDB123EEF1A1007BB2D3 /* TrackCell */ = {
+			isa = PBXGroup;
+			children = (
+				55138321227DCD7B00A739ED /* TrackCell.swift */,
+				AF0D49FD23EB2F8500CDA6A4 /* TrackCell.xib */,
+				AF98DDAD23EE0DAB007BB2D3 /* DownloadButtons.swift */,
+				AF98DDAF23EE101D007BB2D3 /* DownloadButtons.xib */,
+			);
+			path = TrackCell;
+			sourceTree = "<group>";
+		};
 		AFEF6D8723ED94C600646742 /* MusicSearchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				5513832B227DD0C400A739ED /* MusicSearchScreen.swift */,
 				AF456F3223EC7AAC003FA63E /* MusicSearchScreenData.swift */,
 				AF7DC3F023EAEF5600C562A7 /* SearchEngine.swift */,
-				55138321227DCD7B00A739ED /* TrackCell.swift */,
-				AF98DDAB23EE05BB007BB2D3 /* PlayButton.swift */,
-				AF98DDAD23EE0DAB007BB2D3 /* DownloadButtons.swift */,
-				AF98DDAF23EE101D007BB2D3 /* DownloadButtons.xib */,
-				AF0D49FD23EB2F8500CDA6A4 /* TrackCell.xib */,
+				AF98DDB123EEF1A1007BB2D3 /* TrackCell */,
 				AFFBDF7323EB3C7000F182A1 /* SwiftUIView.swift */,
 			);
 			path = MusicSearchScreen;
@@ -152,6 +159,7 @@
 		AFEF6D8823ED94D600646742 /* SphericalWave */ = {
 			isa = PBXGroup;
 			children = (
+				AF98DDAB23EE05BB007BB2D3 /* PlayButton.swift */,
 				AFEF6D8523ED0F8D00646742 /* WebChannel.swift */,
 				AF7DC3EE23EAED3B00C562A7 /* BatNav.swift */,
 				AF7DC3EC23EAEB6500C562A7 /* UIViewController+Extensions.swift */,

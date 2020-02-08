@@ -1,34 +1,45 @@
 
-//import UIKit
-//
-///// Downloads song snippets, and stores in local file.
-//class LocalTracks: NSObject
-//{
-//    var activeDownloads: [URL: Download] = [ : ]  //FIXME: Be Immutable...make a ActiveDownloads class
-//    let channel: URLSession
-//    let files = Files()  //FIXME: Inject Me
-//    
-//    init(channel: URLSession) { self.channel = channel }
-//    
-//    func startDownload(_ track: Track2) {
-//        let download = Download(track: track, channel: channel)
-//        //FIXME: download.task.delegate
-//        activeDownloads[download.track.previewURL] = download
-//    }
-//    
-//    func pauseDownload(_ track: Track2) {
-//        guard let download = activeDownloads[track.previewURL] else { fatalError() }
-//        download.pause()
-//    }
-//    
-//    func resumeDownload(_ track: Track2) {
-//        guard let download = activeDownloads[track.previewURL] else { return }
-//        download.resume()
-//    }
-//    
-//    func cancelDownload(_ track: Track2) {
-//        guard let download = activeDownloads[track.previewURL] else { fatalError() }
-//        download.cancel()
-//        activeDownloads[track.previewURL] = nil   //remove Download
-//    }
-//}
+import Foundation
+
+class LocalTracks
+{
+    let files = Files() //FIXME: Inject...db
+    let tracks: [LocalTrack]
+    let channel: URLSession
+    
+    init(tracks: [LocalTrack], channel: URLSession) {
+        self.channel = channel
+        
+//        let tracks = tracks.map { LocalTrack(track2: $0, download: channel.downloadTask(with: $0.previewURL), files: files) }
+        self.tracks = tracks
+    }
+    
+    func urlForTrack(at indexPath: IndexPath) -> URL {
+        let track = tracks[indexPath.row]
+        return track.previewURL()
+    }
+    
+    func add(track: LocalTrack) {
+        
+    }
+    
+    func delete(track: LocalTrack) {
+        
+    }
+}
+
+extension LocalTracks: RandomAccessCollection
+{
+    typealias Element = LocalTrack
+    typealias Index = Array<LocalTrack>.Index
+    
+    var startIndex: Index { tracks.startIndex }
+    var endIndex: Index { tracks.endIndex }
+    
+    subscript(position: Index) -> Element {
+        get { tracks[position] }
+        //setter for mutable
+    }
+}
+
+
