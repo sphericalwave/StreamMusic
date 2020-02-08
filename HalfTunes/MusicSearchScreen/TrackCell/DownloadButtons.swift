@@ -8,20 +8,21 @@
 
 import UIKit
 
+protocol DownloadButtonsDelegate: AnyObject {
+    func download2()    //FIXME:
+    func pause()
+    func resume()
+    func cancel()
+}
+
 class DownloadButtons: UIViewController
 {
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var downloadButton: UIButton!    //FIXME: Break Into Component Objects
+    @IBOutlet weak var downloadButton: UIButton!
     @IBOutlet weak var pauseButton: PlayButton!
+    weak var delegate: DownloadButtonsDelegate?
     
-    //let download: URLSessionDownloadTask
-    //let track: LocalTrack
-    
-    init() {
-        //self.download = download
-        //self.track = track
-        super.init(nibName: "DownloadButtons", bundle: nil)
-    }
+    init() { super.init(nibName: "DownloadButtons", bundle: nil) }
     required init?(coder: NSCoder) { fatalError() }
     
     override func viewDidLoad() {
@@ -29,32 +30,31 @@ class DownloadButtons: UIViewController
         pauseButton.delegate = self
     }
     
-    @IBAction func cancelTapped() {
-        //track.cancelDownload()
-        //pauseButton.setTitle("Resume", for: .normal)
-        downloadButton.isHidden = false
-        pauseButton.isHidden = true
-        cancelButton.isHidden = false
+    @IBAction func cancelTapped() { delegate?.cancel()
+//        downloadButton.isHidden = false
+//        pauseButton.isHidden = true
+//        cancelButton.isHidden = false
     }
     
     @IBAction func downloadTapped() {
-        //track.startDownload()
-        downloadButton.isHidden = true
-        pauseButton.isHidden = false
-        cancelButton.isHidden = false
+        delegate?.download2()
+//        downloadButton.isHidden = true
+//        pauseButton.isHidden = false
+//        cancelButton.isHidden = false
     }
     
-    @IBAction func pauseOrResumeTapped() {
-        //FIXME: Toggle Behavior Belongs inside a decorated UIButton
-        //if ()
-        // guard let play = UIImage(systemName: "play.circle") else { fatalError() }
-        // pauseButton.setImage(play, for: .normal)
-        //track.pauseDownload()
-        //}
-        //else {
-        //track.resumeDownload()
-        //}
-    }
+//    @IBAction func pauseOrResumeTapped() {
+//
+//        //FIXME: Toggle Behavior Belongs inside a decorated UIButton
+//        //if ()
+//        // guard let play = UIImage(systemName: "play.circle") else { fatalError() }
+//        // pauseButton.setImage(play, for: .normal)
+//        //track.pauseDownload()
+//        //}
+//        //else {
+//        //track.resumeDownload()
+//        //}
+//    }
     
     //FIXME: Push Hidding Behavior into Buttons
     func update() {
@@ -85,8 +85,12 @@ extension DownloadButtons: PlayButtonDelegate
 {
     func update(mode: PlayMode) {
         switch mode {
-        case .play:     print("resume downloading")
-        case .pause:    print("pause downloading")
+        case .play:
+            print("resume downloading")
+            delegate?.resume()
+        case .pause:
+            print("pause downloading")
+            delegate?.pause()
         }
     }
 }

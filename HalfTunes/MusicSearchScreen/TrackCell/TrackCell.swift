@@ -11,13 +11,15 @@ class TrackCell: UIViewController
     @IBOutlet weak var buttonContainer: UIView!
     
     let track: Track2
-    //let track: LocalTrack
     let downloadButtons: DownloadButtons
+    let download: URLSessionDownloadTask
     
-    init(track: Track2) {
+    init(track: Track2, download: URLSessionDownloadTask) {
         self.track = track
+        self.download = download
         self.downloadButtons = DownloadButtons()
         super.init(nibName: "TrackCell2", bundle: nil)
+        
     }
     required init?(coder: NSCoder) { fatalError() }
     
@@ -27,13 +29,9 @@ class TrackCell: UIViewController
         embed(viewController: downloadButtons, inContainerView: buttonContainer)
     }
     
-    //FIXME: This is too big
     func updateUI() {
         titleLabel.text = track.name
         artistLabel.text = track.artist
-//        downloadButton.isHidden = false
-//        pauseButton.isHidden = true
-//        cancelButton.isHidden = true
         progressView.progress = 0.3
     }
     
@@ -43,60 +41,26 @@ class TrackCell: UIViewController
     }
 }
 
-extension Files: URLSessionDownloadDelegate   //FIXME: DownloadDelegate
+extension TrackCell: DownloadButtonsDelegate
 {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
-                    didFinishDownloadingTo location: URL)
-    {
-        //    guard let sourceURL = downloadTask.originalRequest?.url else { return }
-        //    let download = downloadService.activeDownloads[sourceURL]
-        //    downloadService.activeDownloads[sourceURL] = nil  //removing from active downloads
-        //
-        //    let path = files.path(for: url)
-        //      files.removeFile(at: path)
-        //      files.copyFile(at: path)
-        //      update the tableViewCell
-        
-        //    let destinationURL = localFilePath(for: sourceURL)
-        //    print(destinationURL)
-        //
-        //    let fileManager = FileManager.default
-        //    try? fileManager.removeItem(at: destinationURL)
-        //
-        //    do {
-        //      try fileManager.copyItem(at: location, to: destinationURL)
-        //      download?.track.downloaded = true
-        //    } catch let error {
-        //      print("Could not copy file to disk: \(error.localizedDescription)")
-        //    }
-        //
-        //    if let index = download?.track.index {
-        //      DispatchQueue.main.async { [weak self] in
-        //        self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
-        //      }
-        //    }
+    func download2() {
+        download.resume()
+        //start updating  progress
     }
     
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
-                    didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
-                    totalBytesExpectedToWrite: Int64) {
-        //    guard
-        //      let url = downloadTask.originalRequest?.url,
-        //      let download = downloadService.activeDownloads[url]  else {
-        //        return
-        //    }
-        //
-        //    download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-        //    let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
-        //
-        //    DispatchQueue.main.async {
-        ////      if let trackCell = self.tableView.cellForRow(at: IndexPath(row: download.track.index,
-        ////                                                                 section: 0)) as? TrackCell {
-        ////        trackCell.updateDisplay(progress: download.progress, totalSize: totalSize)
-        ////      }
-        //    }
+    func pause() {
+        download.cancel()
+        //download.cancel(byProducingResumeData: <#T##(Data?) -> Void#>)
+        //stop updating  progress
+    }
+    
+    func resume() {
+        download.resume()
+        //start updating  progress
+    }
+    
+    func cancel() {
+        download.cancel()
+        //stop updating  progress
     }
 }
-
-
-

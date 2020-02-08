@@ -7,9 +7,11 @@ class MusicSearchScreen: UITableViewController
 {
     var tracks: Tracks? //FIXME: Be immutable
     let searchEngine: SearchEngine
+    let channel: URLSession
     
-    init(searchEngine: SearchEngine) {
+    init(searchEngine: SearchEngine, channel: URLSession) {
         self.searchEngine = searchEngine
+        self.channel = channel
         super.init(nibName: nil, bundle: nil)
         title = "Music Search"
         navigationItem.searchController = searchEngine
@@ -29,8 +31,8 @@ class MusicSearchScreen: UITableViewController
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.id, for: indexPath)
         guard let track = tracks?[indexPath.row] else { fatalError() }
-        //let localTrack = LocalTrack(track2: track, download: download, files: Files())
-        let trackCell = TrackCell(track: track)
+        let download = channel.downloadTask(with: track.previewURL)
+        let trackCell = TrackCell(track: track, download: download)
         embed(viewController: trackCell, inContainerView: cell.contentView)
         return cell
     }
@@ -53,7 +55,6 @@ class MusicSearchScreen: UITableViewController
 extension MusicSearchScreen: SearchEngineDelegate
 {
     func update(tracks: Tracks) {
-        //let localTracks = tracks.tracks.map
         self.tracks = tracks
         tableView.reloadData()
         tableView.setContentOffset(CGPoint.zero, animated: false)
