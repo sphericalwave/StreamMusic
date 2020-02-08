@@ -17,7 +17,7 @@ class TrackCell: UIViewController
     init(track: Track2) {
         self.track = track
         self.downloadButtons = DownloadButtons()
-        super.init(nibName: "TrackCell", bundle: nil)
+        super.init(nibName: "TrackCell2", bundle: nil)
     }
     required init?(coder: NSCoder) { fatalError() }
     

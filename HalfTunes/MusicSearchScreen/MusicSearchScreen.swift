@@ -46,7 +46,7 @@ class MusicSearchScreen: UITableViewController
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 81.0
+        return 99.0
     }
 }
 
