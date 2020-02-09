@@ -17,6 +17,7 @@
 		AF456F3523EC8350003FA63E /* Track2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF456F3423EC8350003FA63E /* Track2.swift */; };
 		AF74531123EF6CCB00B6F726 /* TrackCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF74531023EF6CCB00B6F726 /* TrackCell2.xib */; };
 		AF74531323EF79AA00B6F726 /* DownloadProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF74531223EF79AA00B6F726 /* DownloadProgress.swift */; };
+		AF74531523EF7E5C00B6F726 /* DownloadProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF74531423EF7E5C00B6F726 /* DownloadProgress.xib */; };
 		AF7DC3ED23EAEB6500C562A7 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DC3EC23EAEB6500C562A7 /* UIViewController+Extensions.swift */; };
 		AF7DC3EF23EAED3B00C562A7 /* BatNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DC3EE23EAED3B00C562A7 /* BatNav.swift */; };
 		AF7DC3F123EAEF5600C562A7 /* SearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DC3F023EAEF5600C562A7 /* SearchEngine.swift */; };
@@ -56,6 +57,7 @@
 		AF456F3423EC8350003FA63E /* Track2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track2.swift; sourceTree = "<group>"; };
 		AF74531023EF6CCB00B6F726 /* TrackCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell2.xib; sourceTree = "<group>"; };
 		AF74531223EF79AA00B6F726 /* DownloadProgress.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = DownloadProgress.swift; sourceTree = "<group>"; tabWidth = 4; };
+		AF74531423EF7E5C00B6F726 /* DownloadProgress.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadProgress.xib; sourceTree = "<group>"; };
 		AF7DC3EC23EAEB6500C562A7 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; tabWidth = 4; };
 		AF7DC3EE23EAED3B00C562A7 /* BatNav.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = BatNav.swift; sourceTree = "<group>"; tabWidth = 4; };
 		AF7DC3F023EAEF5600C562A7 /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = SearchEngine.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -143,6 +145,7 @@
 				AF98DDAD23EE0DAB007BB2D3 /* DownloadButtons.swift */,
 				AF98DDAF23EE101D007BB2D3 /* DownloadButtons.xib */,
 				AF74531223EF79AA00B6F726 /* DownloadProgress.swift */,
+				AF74531423EF7E5C00B6F726 /* DownloadProgress.xib */,
 			);
 			path = TrackCell;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5394F02521864DF5006E754C /* LaunchScreen.storyboard in Resources */,
+				AF74531523EF7E5C00B6F726 /* DownloadProgress.xib in Resources */,
 				D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */,
 				AF98DDB023EE101D007BB2D3 /* DownloadButtons.xib in Resources */,
 				AF74531123EF6CCB00B6F726 /* TrackCell2.xib in Resources */,

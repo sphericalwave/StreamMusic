@@ -11,8 +11,7 @@
             <connections>
                 <outlet property="artistLabel" destination="BRA-u3-jnm" id="PJM-KP-Q7C"/>
                 <outlet property="buttonContainer" destination="9vZ-SA-NgH" id="K8S-kC-Gos"/>
-                <outlet property="progressLabel" destination="V1P-IX-aGs" id="te3-y5-jpt"/>
-                <outlet property="progressView" destination="w0K-JK-H3r" id="PcW-8S-RDu"/>
+                <outlet property="progressContainer" destination="die-Z3-Sps" id="LQp-XN-scj"/>
                 <outlet property="titleLabel" destination="941-hS-vYb" id="ilL-ew-VJT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="FYb-zs-Vlx"/>
             </connections>
@@ -26,10 +25,10 @@
                     <rect key="frame" x="9" y="9" width="344" height="81"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0Ui-Rb-xDy">
-                            <rect key="frame" x="0.0" y="0.0" width="344" height="56.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="344" height="50"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="gSn-rH-8dY">
-                                    <rect key="frame" x="0.0" y="5.5" width="186" height="45.5"/>
+                                    <rect key="frame" x="0.0" y="2.5" width="186" height="45.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="941-hS-vYb">
                                             <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
@@ -46,7 +45,7 @@
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="9vZ-SA-NgH">
-                                    <rect key="frame" x="194" y="3.5" width="150" height="50"/>
+                                    <rect key="frame" x="194" y="0.0" width="150" height="50"/>
                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="Bur-N2-hfV"/>
@@ -56,17 +55,12 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H34-6z-Zep">
-                            <rect key="frame" x="0.0" y="65.5" width="344" height="15.5"/>
+                            <rect key="frame" x="0.0" y="59" width="344" height="22"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="100% of 1.35MB" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1P-IX-aGs">
-                                    <rect key="frame" x="0.0" y="0.0" width="344" height="13.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <progressView opaque="NO" tag="40" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w0K-JK-H3r">
-                                    <rect key="frame" x="0.0" y="13.5" width="344" height="2"/>
-                                </progressView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="die-Z3-Sps">
+                                    <rect key="frame" x="0.0" y="0.0" width="344" height="22"/>
+                                    <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>

@@ -6,38 +6,32 @@ class TrackCell: UIViewController
     static let id = "TrackCell" //FIXME: Framework violating OOP
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressContainer: UIView!
     @IBOutlet weak var buttonContainer: UIView!
-    
     let track: Track2
-    let downloadButtons: DownloadButtons
+    let downloadProgress: DownloadProgress
     let download: URLSessionDownloadTask
     
     init(track: Track2, download: URLSessionDownloadTask) {
         self.track = track
         self.download = download
-        self.downloadButtons = DownloadButtons()
+        self.downloadProgress = DownloadProgress()
         super.init(nibName: "TrackCell2", bundle: nil)
-        
+        downloadProgress.delegate = self
     }
+    
     required init?(coder: NSCoder) { fatalError() }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
-        embed(viewController: downloadButtons, inContainerView: buttonContainer)
-    }
-    
-    func updateUI() {
         titleLabel.text = track.name
         artistLabel.text = track.artist
-        progressView.progress = 0.3
-    }
-    
-    func updateDisplay(progress: Float, totalSize : String) {
-        progressView.progress = progress
-        progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totalSize)
+
+        let downloadButtons = DownloadButtons()
+        downloadButtons.delegate = self
+        embed(viewController: downloadButtons, inContainerView: buttonContainer)
+
+        embed(viewController: downloadProgress, inContainerView: progressContainer)
     }
 }
 
@@ -45,22 +39,28 @@ extension TrackCell: DownloadButtonsDelegate
 {
     func download2() {
         download.resume()
-        //start updating  progress
+        downloadProgress.startUpdating()    //FIXME: Duplication Here ∆
     }
     
     func pause() {
         download.cancel()
-        //download.cancel(byProducingResumeData: <#T##(Data?) -> Void#>)
-        //stop updating  progress
+        downloadProgress.stopUpdating()
     }
     
     func resume() {
         download.resume()
-        //start updating  progress
+        downloadProgress.startUpdating()
     }
     
     func cancel() {
         download.cancel()
-        //stop updating  progress
+        downloadProgress.stopUpdating()
+    }
+}
+
+extension TrackCell: DownloadProgressDelegate
+{
+    func update() -> Progress {
+        return download.progress
     }
 }

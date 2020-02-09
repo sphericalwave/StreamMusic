@@ -18,7 +18,7 @@ class DownloadProgress: UIViewController
     required init?(coder: NSCoder) { fatalError() }
     
     func startUpdating() {
-        self.timer = Timer(timeInterval: 1.0, repeats: true) { _ in
+        self.timer = Timer(timeInterval: 0.10, repeats: true) { _ in
             guard let progress = self.delegate?.update() else { fatalError() }
             guard let eta = progress.estimatedTimeRemaining else { fatalError() }
             self.label.text = eta.string()
@@ -27,6 +27,11 @@ class DownloadProgress: UIViewController
     }
     
     func stopUpdating() { timer?.invalidate() }
+    
+//    func updateDisplay(progress: Float, totalSize : String) {
+//        progressView.progress = progress
+//        progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totalSize)
+//    }
 }
 
 extension TimeInterval
